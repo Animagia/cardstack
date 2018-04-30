@@ -1,0 +1,223 @@
+
+body {
+	line-height: 150%;
+	text-align: justify;
+	font-family: Tahoma, sans-serif;
+	color: #333;
+}
+
+h1 { /* should never be used - the only h1 on the page should be the blog title in the header */
+	margin-bottom: 10px;
+	font-size: 18px;
+	color: #202020;
+	text-align: left;
+}
+
+h2 { /* should never be used in the editor and reserved only for post and page titles */
+	margin-bottom: 9px;
+	font-size: 16px;
+	color: #202020;
+	text-align: left;
+}
+
+h3 {
+	margin-bottom: 8px;
+	font-size: 15px;
+	color: #404040;
+	text-align: left;
+}
+
+h4 {
+	margin-bottom: 7px;
+	font-size: 14px;
+	color: #404040;
+	text-align: left;
+}
+
+h5 {
+	margin-bottom: 6px;
+	font-size: 13px;
+	color: #404040;
+	text-align: left;
+}
+
+h6 {
+	margin-bottom: 5px;
+	font-size: 13px;
+	color: #646464;
+	text-align: left;
+}
+
+p, ul, ol, table, dl, address, div.wp-caption, pre, blockquote {
+	margin: 0 0 12px 0;
+}
+
+table {
+	max-width: 100%;
+}
+
+table, table th, table td {
+	border-width: 1px;
+	border-color: #646464;
+	border-style: solid !important;
+}
+
+table th, table td {
+	padding: 8px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+ul {
+	list-style-type: disc;
+	list-style-position: outside;
+	padding: 0 10px;
+}
+
+ol {
+	list-style-position: outside;
+	padding: 0 10px;
+}
+
+ul li, ol li {
+	padding-bottom: 6px;
+	margin-left: 1em;
+}
+
+ul li:last-of-type, ol li:last-of-type {
+	padding-bottom: 0;
+}
+
+ul ul, ul ol, ol ul, ol ol { /* nested lists */
+	margin: 6px 0 0 10px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+blockquote {
+	font-family: Cambria, serif;
+	font-style: italic;
+	padding: 0 16px;
+	margin-left: 12px; margin-right: 12px;
+	font-size: 14px;
+}
+
+blockquote p {
+	margin: 0;
+}
+
+blockquote cite {
+	display: block;
+	margin-top: 4px;
+	width: 100%;
+	text-align: right;
+	font-size: 13.5px;
+	font-style: normal;
+}
+
+dt, dd {
+	margin-bottom: 6px;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-left: 12px; margin-right: 12px;
+}
+
+dt:last-child, dd:last-child {
+	margin-bottom: 0;
+}
+
+pre {
+	margin-left: 12px; margin-right: 12px;
+	background: #f6f6f6;
+	padding: 8px;
+	overflow: auto;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+img.alignleft, img.alignright, img.aligncenter, img.alignnone {
+	padding: 1px;
+	border: 2px solid #DEE2E7;
+}
+
+img.alignleft {
+	float: left;
+	margin: 0.75em 16px 12px 0;
+}
+
+img.alignright {
+	float: right;
+	margin: 0.75em 0 12px 16px;
+}
+
+img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.wp-caption {
+	background: #f6f6f6;
+	padding-bottom: 5px;
+	max-width: 100%;
+}
+
+div.wp-caption.aligncenter {
+	margin-left: auto; margin-right: auto;
+}
+
+div.wp-caption.alignleft {
+	float: left;
+	margin: 0 12px 12px 0;
+}
+
+div.wp-caption.alignright{
+	float: right;
+	margin: 0 0 12px 12px;
+}
+
+div.wp-caption img {
+	margin: 5px;
+}
+
+div.wp-caption p.wp-caption-text {
+	margin: 0 5px 5px 5px;
+	text-align: center;
+}
+
+/* gallery - the styles below are only meant for the default, 3-column layout */
+
+dl.gallery-item {
+	margin: 10px 5px 12px 5px;
+	max-width: 30%;
+}
+
+dl.gallery-item dt img {
+	padding: 1px;
+	border: 2px solid #DEE2E7;
+}
+
+dl.gallery-item dd {
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.gallery-caption {
+	/* the captions render fine as it is! */
+}
+
+a {
+	text-decoration: inherit;
+	color: #41669E;
+	font-weight: bold;
+}
