@@ -9,16 +9,16 @@
 
 <?php
 
-function getStatus($sub) {
+function cardstack_am_getStatus($sub) {
     return $sub->data["status"];
 }
 
-function isActive($sub) {
-    return (getStatus($sub) == "active");
+function cardstack_am_isActive($sub) {
+    return (cardstack_am_getStatus($sub) == "active");
 }
 
-function isExpiring($sub) {
-    if (getStatus($sub) != "pending-cancel") {
+function cardstack_am_isExpiring($sub) {
+    if (cardstack_am_getStatus($sub) != "pending-cancel") {
         return false;
     }
 
@@ -29,6 +29,27 @@ function isExpiring($sub) {
     }
 
     return false;
+}
+
+function cardstack_am_getSubStatus() {
+    $expiring = false;
+
+    $subscriptions = hforce_get_users_subscriptions();
+
+    foreach ($subscriptions as $sub) {
+        if (cardstack_am_isActive($sub)) {
+            return "active";
+        }
+        if (cardstack_am_isExpiring($sub)) {
+            $expiring = true;
+        }
+    }
+
+    if ($expiring) {
+        return "expiring";
+    }
+
+    return "invalid";
 }
 ?>
 
@@ -50,30 +71,9 @@ if (is_active_sidebar(1)) {
                 <p>Custom paragraph.</p>
 
                 <?php
-                $subscriptions = hforce_get_users_subscriptions();
+                echo ("<p>Stuff: " . $subscriptions[113]->data["status"] . " " . $subscriptions[113]->data["schedule_end"] . "</p>");
 
-                foreach ($subscriptions as $subscription) {
-                    
-                }
-
-                $sub = $subscriptions[113];
-                
-                $subdata = $subscriptions[113]->data;
-
-                $substatus = $subdata->status;
-
-                $expiration = $subdata["schedule_end"];
-                
-                
-
-                echo("<pre>");
-                var_dump(isActive($sub));
-                var_dump(isExpiring($sub));
-                echo("</pre>");
-
-                echo ("<p>Stuff: " . $subdata["status"] . " " . $subdata["schedule_end"] . " unix: " . $expiration->getTimestamp() . "</p>");
-
-                echo ("<p>Is active: " . (int)isActive($sub) . ", is expiring: " . (int)isExpiring($sub) . "</p>");
+                echo ("<p>Status: " . cardstack_am_getSubStatus());
                 ?>
 
                 <pre><?php var_dump($subscriptions[113]->data); ?></pre>

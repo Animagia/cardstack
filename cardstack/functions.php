@@ -330,4 +330,38 @@ function cardstack_sanitize_custom_css($custom_styles) {
     $custom_styles = str_replace('binding', '', $custom_styles);
     return $custom_styles;
 }
+
+
+
+
+/* ==== Animagia.pl-specific stuff ==== */
+class CardStackAm {
+
+    function getStatus($sub) {
+        return $sub->data["status"];
+    }
+
+    function isActive($sub) {
+        return (cardstack_am_getStatus($sub) == "active");
+    }
+
+    function isExpiring($sub) {
+        if (getStatus($sub) != "pending-cancel") {
+            return false;
+        }
+
+        $expiration = $sub->data["schedule_end"]->getTimestamp();
+
+        if (time() < $expiration) {
+            return true;
+        }
+
+        return false;
+    }
+
+}
+
+$cardstack_am = new CardStackAm();
+
+
 ?>
