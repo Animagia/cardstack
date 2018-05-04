@@ -9,11 +9,27 @@
 
 <?php
 
-function isActive($sub) {
-    $subdata = $sub->data;
-    
+function getStatus($sub) {
+    return $sub->data["status"];
 }
 
+function isActive($sub) {
+    return (getStatus($sub) == "active");
+}
+
+function isExpiring($sub) {
+    if (getStatus($sub) != "pending-cancel") {
+        return false;
+    }
+
+    $expiration = $sub->data["schedule_end"]->getTimestamp();
+
+    if (time() < $expiration) {
+        return true;
+    }
+
+    return false;
+}
 ?>
 
 <main<?php
@@ -33,22 +49,33 @@ if (is_active_sidebar(1)) {
 
                 <p>Custom paragraph.</p>
 
-				<?php $subscriptions = hforce_get_users_subscriptions();
-				
-                                foreach($subscriptions as $subscription) {
-                                    
-                                }
-                                
-				$subdata = $subscriptions[113]->data;
-				
-				$substatus = $subdata->status;
-				
-				$scheduleEndString = $subdata->schedule_end;
-				
-				echo ("<p>Stuff: " . $subdata["status"] . " " . $subdata["schedule_end"] . "</p>");
-				
-				 ?>
-				
+                <?php
+                $subscriptions = hforce_get_users_subscriptions();
+
+                foreach ($subscriptions as $subscription) {
+                    
+                }
+
+                $sub = $subscriptions[113];
+                
+                $subdata = $subscriptions[113]->data;
+
+                $substatus = $subdata->status;
+
+                $expiration = $subdata["schedule_end"];
+                
+                
+
+                echo("<pre>");
+                var_dump(isActive($sub));
+                var_dump(isExpiring($sub));
+                echo("</pre>");
+
+                echo ("<p>Stuff: " . $subdata["status"] . " " . $subdata["schedule_end"] . " unix: " . $expiration->getTimestamp() . "</p>");
+
+                echo ("<p>Is active: " . (int)isActive($sub) . ", is expiring: " . (int)isExpiring($sub) . "</p>");
+                ?>
+
                 <pre><?php var_dump($subscriptions[113]->data); ?></pre>
 
                 <pre><?php var_dump(hforce_get_users_subscriptions()); ?></pre>
