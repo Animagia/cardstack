@@ -359,6 +359,43 @@ class CardStackAm {
         return false;
     }
 
+    function getSubStatus() {
+        $expiring = false;
+
+        $subscriptions = hforce_get_users_subscriptions();
+        foreach ($subscriptions as $sub) {
+            if (cardstack_am_isActive($sub)) {
+                return "active";
+            }
+            if (cardstack_am_isExpiring($sub)) {
+                $expiring = true;
+            }
+        }
+
+        if ($expiring) {
+            return "expiring";
+        }
+
+        return "invalid";
+    }
+
+    function getExpirationDate() {
+        $expiration = -1;
+
+        $subscriptions = hforce_get_users_subscriptions();
+        foreach ($subscriptions as $sub) {
+            if (cardstack_am_isExpiring($sub)) {
+                $expiration = max($expiration, $sub->data["schedule_end"]->getTimestamp());
+            }
+        }
+
+        if ($expiration == -1) {
+            throw new Exception("Tried to get expiration date, but no sub is expiring.");
+        }
+
+        return $expiration;
+    }
+
 }
 
 $cardstack_am = new CardStackAm();

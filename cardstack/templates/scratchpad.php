@@ -71,14 +71,17 @@ if (is_active_sidebar(1)) {
                 <p>Custom paragraph.</p>
 
                 <?php
-                echo ("<p>Stuff: " . $subscriptions[113]->data["status"] . " " . $subscriptions[113]->data["schedule_end"] . "</p>");
+                
+                $substatus = $cardstack_am->getSubStatus();
 
-                echo ("<p>Status: " . cardstack_am_getSubStatus());
+                echo ("<p>Status: " . $substatus . "</p>");
+                
+                if($substatus == "expiring") {
+                    echo ("<p>Valid until: " . $cardstack_am->getExpirationDate() . "</p>");
+                }
+                
+                
                 ?>
-
-                <pre><?php var_dump($subscriptions[113]->data); ?></pre>
-
-                <pre><?php var_dump(hforce_get_users_subscriptions()); ?></pre>
 
                 <?php the_content(); ?> 
 
