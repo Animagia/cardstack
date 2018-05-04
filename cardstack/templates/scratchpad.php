@@ -7,52 +7,6 @@
 
 <?php get_header(); ?>
 
-<?php
-
-function cardstack_am_getStatus($sub) {
-    return $sub->data["status"];
-}
-
-function cardstack_am_isActive($sub) {
-    return (cardstack_am_getStatus($sub) == "active");
-}
-
-function cardstack_am_isExpiring($sub) {
-    if (cardstack_am_getStatus($sub) != "pending-cancel") {
-        return false;
-    }
-
-    $expiration = $sub->data["schedule_end"]->getTimestamp();
-
-    if (time() < $expiration) {
-        return true;
-    }
-
-    return false;
-}
-
-function cardstack_am_getSubStatus() {
-    $expiring = false;
-
-    $subscriptions = hforce_get_users_subscriptions();
-
-    foreach ($subscriptions as $sub) {
-        if (cardstack_am_isActive($sub)) {
-            return "active";
-        }
-        if (cardstack_am_isExpiring($sub)) {
-            $expiring = true;
-        }
-    }
-
-    if ($expiring) {
-        return "expiring";
-    }
-
-    return "invalid";
-}
-?>
-
 <main<?php
 if (is_active_sidebar(1)) {
     print(' class="with-sidebar"');
@@ -71,16 +25,16 @@ if (is_active_sidebar(1)) {
                 <p>Custom paragraph.</p>
 
                 <?php
-                
                 $substatus = $cardstack_am->getSubStatus();
 
                 echo ("<p>Status: " . $substatus . "</p>");
-                
-                if($substatus == "expiring") {
-                    echo ("<p>Valid until: " . $cardstack_am->getExpirationDate() . "</p>");
+
+                $date = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
+                $date->setTimestamp($cardstack_am->getExpirationDate());
+
+                if ($substatus == "expiring") {
+                    echo ("<p>Valid until: " . $date->format("Y-m-d H:i:s") . "</p>");
                 }
-                
-                
                 ?>
 
                 <?php the_content(); ?> 

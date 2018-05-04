@@ -342,11 +342,11 @@ class CardStackAm {
     }
 
     function isActive($sub) {
-        return (cardstack_am_getStatus($sub) == "active");
+        return ($this->getStatus($sub) == "active");
     }
 
     function isExpiring($sub) {
-        if (getStatus($sub) != "pending-cancel") {
+        if ($this->getStatus($sub) != "pending-cancel") {
             return false;
         }
 
@@ -364,10 +364,10 @@ class CardStackAm {
 
         $subscriptions = hforce_get_users_subscriptions();
         foreach ($subscriptions as $sub) {
-            if (cardstack_am_isActive($sub)) {
+            if ($this->isActive($sub)) {
                 return "active";
             }
-            if (cardstack_am_isExpiring($sub)) {
+            if ($this->isExpiring($sub)) {
                 $expiring = true;
             }
         }
@@ -384,7 +384,7 @@ class CardStackAm {
 
         $subscriptions = hforce_get_users_subscriptions();
         foreach ($subscriptions as $sub) {
-            if (cardstack_am_isExpiring($sub)) {
+            if ($this->isExpiring($sub)) {
                 $expiration = max($expiration, $sub->data["schedule_end"]->getTimestamp());
             }
         }
