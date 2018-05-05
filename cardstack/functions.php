@@ -424,6 +424,18 @@ function cardstack_am_no_repeat_purchase( $purchasable, $product ) {
 }
 add_filter( 'woocommerce_is_purchasable', 'cardstack_am_no_repeat_purchase', 10, 2 );
 
+remove_filter( 'the_content', 'wpautop' );
+
+
+ 
+function cardstack_am_remove_checkout_phone( $fields ) {
+
+    unset($fields['billing']['billing_phone']);
+
+    return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'cardstack_am_remove_checkout_phone' );
 
 
 ?>
