@@ -401,4 +401,30 @@ class CardStackAm {
 $cardstack_am = new CardStackAm();
 
 
+
+function cardstack_am_no_repeat_purchase( $purchasable, $product ) {
+    $anime = 118;
+    
+    //$product_id = $product->is_type( 'variation' ) ? $product->variation_id : $product->id;
+    $product_id = $product->id;
+    
+    if ( $anime != $product_id ) {
+        return $purchasable;
+    }
+    
+    if ( wc_customer_bought_product( wp_get_current_user()->user_email, get_current_user_id(), $product_id ) ) {
+        $purchasable = false;
+    }
+    
+//    if ( $purchasable && $product->is_type( 'variation' ) ) {
+//        $purchasable = $product->parent->is_purchasable();
+//    }
+    
+    return $purchasable;
+}
+//add_filter( 'woocommerce_variation_is_purchasable', 'cardstack_am_no_repeat_purchase', 10, 2 );
+add_filter( 'woocommerce_is_purchasable', 'cardstack_am_no_repeat_purchase', 10, 2 );
+
+
+
 ?>
