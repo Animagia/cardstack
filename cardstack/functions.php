@@ -337,16 +337,16 @@ function cardstack_sanitize_custom_css($custom_styles) {
 /* ==== Animagia.pl-specific stuff ==== */
 class CardStackAm {
 
-    function getStatus($sub) {
+    static function getStatus($sub) {
         return $sub->data["status"];
     }
 
-    function isActive($sub) {
-        return ($this->getStatus($sub) == "active");
+    static function isActive($sub) {
+        return (self::getStatus($sub) == "active");
     }
 
-    function isExpiring($sub) {
-        if ($this->getStatus($sub) != "pending-cancel") {
+    static function isExpiring($sub) {
+        if (self::getStatus($sub) != "pending-cancel") {
             return false;
         }
 
@@ -359,15 +359,15 @@ class CardStackAm {
         return false;
     }
 
-    function getSubStatus() {
+    static function getSubStatus() {
         $expiring = false;
 
         $subscriptions = hforce_get_users_subscriptions();
         foreach ($subscriptions as $sub) {
-            if ($this->isActive($sub)) {
+            if (self::isActive($sub)) {
                 return "active";
             }
-            if ($this->isExpiring($sub)) {
+            if (self::isExpiring($sub)) {
                 $expiring = true;
             }
         }
@@ -379,12 +379,12 @@ class CardStackAm {
         return "invalid";
     }
 
-    function getExpirationDate() {
+    static function getExpirationDate() {
         $expiration = -1;
 
         $subscriptions = hforce_get_users_subscriptions();
         foreach ($subscriptions as $sub) {
-            if ($this->isExpiring($sub)) {
+            if (self::isExpiring($sub)) {
                 $expiration = max($expiration, $sub->data["schedule_end"]->getTimestamp());
             }
         }
@@ -403,26 +403,25 @@ $cardstack_am = new CardStackAm();
 
 
 function cardstack_am_no_repeat_purchase( $purchasable, $product ) {
-    $anime = 118;
+    $premium = 111;
+    $amagi = 118;
     
-    //$product_id = $product->is_type( 'variation' ) ? $product->variation_id : $product->id;
     $product_id = $product->id;
     
-    if ( $anime != $product_id ) {
-        return $purchasable;
+    if ($amagi == $product_id && wc_customer_bought_product(wp_get_current_user()->user_email,
+                    get_current_user_id(), $product_id)) {
+        return false;
     }
     
-    if ( wc_customer_bought_product( wp_get_current_user()->user_email, get_current_user_id(), $product_id ) ) {
-        $purchasable = false;
+    if($premium == $product_id) {
+        $substatus = CardStackAm::getSubStatus();
+        if("invalid" != $substatus) {
+            return false;
+        }
     }
-    
-//    if ( $purchasable && $product->is_type( 'variation' ) ) {
-//        $purchasable = $product->parent->is_purchasable();
-//    }
     
     return $purchasable;
 }
-//add_filter( 'woocommerce_variation_is_purchasable', 'cardstack_am_no_repeat_purchase', 10, 2 );
 add_filter( 'woocommerce_is_purchasable', 'cardstack_am_no_repeat_purchase', 10, 2 );
 
 
