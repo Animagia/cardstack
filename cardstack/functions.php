@@ -335,6 +335,11 @@ function cardstack_sanitize_custom_css($custom_styles) {
 
 
 /* ==== Animagia.pl-specific stuff ==== */
+
+
+require_once( __DIR__ . '/includes/am_constants.php');
+
+
 class CardStackAm {
 
     static function getStatus($sub) {
