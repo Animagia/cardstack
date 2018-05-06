@@ -58,10 +58,9 @@ if (is_active_sidebar(1)) {
 
                     <script src="https://static.animagia.pl/dash.all.min.js"></script>
 
-                    <!--<div class="dash-video-player">-->
-                        <video id="am-dash-video" controls="true" style="width: 100%"
-                               poster="<?php echo $cardstack_am_poster;?>"></video>
-                    <!--</div>-->
+
+                    <video id="am-dash-video" controls="true" style="width: 100%"
+                           poster="<?php echo $cardstack_am_poster; ?>"></video>
 
                     <script>
                         function startVideo() {
@@ -74,7 +73,17 @@ if (is_active_sidebar(1)) {
 
                         startVideo();
                     </script>
+
                     <?php
+                    
+                    if ($cardstack_am_episode > 1) :
+                        echo "następny odcinek";
+                    endif;
+                    
+                    if ($cardstack_am_episode < 12) :
+                        echo "poprzedni odcinek";
+                    endif;
+
                 else :
                     echo "<p>Ten odcinek nie jest jeszcze dostępny do bezpłatnego oglądania. " .
                     "Nie czekaj! Załóż konto premium lub kup cyfrową kopię.</p>";
