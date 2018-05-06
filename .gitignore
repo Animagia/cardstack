@@ -1,4 +1,4 @@
 cardstack/.*
 cardstack/*/.*
+cardstack/includes/am_constants.php
 nbproject/private
-

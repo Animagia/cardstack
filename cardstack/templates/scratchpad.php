@@ -53,23 +53,20 @@ if (is_active_sidebar(1)) {
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 118)) {
                         echo ("This user bought Amagi!");
 
-                        $pure_string = "12345";
-                        $key = "!@#$%";
+                        $pure_string = time();
+                        $key = CardStackAmConstants::getKey();
 
                         $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
                         $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-                        $obfuscated = mcrypt_encrypt(MCRYPT_BLOWFISH, $key,
-                                utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv);
+                        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key,
+                                        utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv));
 
-
-                        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
-                        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
                         $decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, $key,
-                                $obfuscated, MCRYPT_MODE_ECB, $iv);
+                                pack("H*", $obfuscated), MCRYPT_MODE_ECB, $iv);
 
 
                         echo("staging.animagia.pl/vid/" . $obfuscated . " " . $decrypted_string);
-                        
+
                         echo("<p>" . CardStackAmConstants::getKey() . "</p>");
                     }
                     ?>
@@ -81,7 +78,7 @@ if (is_active_sidebar(1)) {
                 <?php comments_template(); ?>
 
             <?php endwhile; ?>
-<?php endif; ?>
+        <?php endif; ?>
 
     </article></main>
 
