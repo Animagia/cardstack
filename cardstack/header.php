@@ -30,7 +30,9 @@
 
             $cardstack_headerImageUrl = get_header_image();
             if (!empty($cardstack_headerImageUrl)) {
-                print('<img id="titular-logo" src="' . $cardstack_headerImageUrl . '" alt="" />');
+                $cardstack_headerImageAlt = get_bloginfo('name') . " – " . get_bloginfo('description');
+                print('<img id="titular-logo" src="' . $cardstack_headerImageUrl . '" alt="' .
+                        $cardstack_headerImageAlt  . '" />');
             }
 			
 			$cardstack_headerTextColor = get_header_textcolor();

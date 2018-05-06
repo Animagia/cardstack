@@ -13,7 +13,8 @@ Licensed under the GNU General Public License, version 2 or any later version. S
 */
 
 
-html, body, div, header, hgroup, nav, footer, article, aside, h1, h2, h3, h4, h5, h6, p, ul, ol, li, img, table, tr, th, td, dl, dt, dd, address, pre {
+html, body, div, header, hgroup, nav, footer, article, aside, h1, h2, h3, h4, h5, h6, p, ul, ol, li,
+img, table, tr, th, td, dl, dt, dd, address, pre {
     margin: 0; padding: 0; border-style: none;
 }
 
@@ -399,7 +400,8 @@ ol.commentlist p {
     margin-bottom: 10px;
 }
 
-ol.commentlist div.comment-meta.commentmetadata+* { /* just to prevent comment body from creeping beside the photo if the user decreases font size significantly */
+/* just to prevent comment body from creeping beside the photo if the user decreases font size significantly */
+ol.commentlist div.comment-meta.commentmetadata+* { 
     clear: both;
 }
 
@@ -408,7 +410,8 @@ ol.commentlist ol, ol.commentlist ul { /* fix for lists in comment body */
     margin-bottom: 10px;
 }
 
-ol.commentlist ol ol, ol.commentlist ul ol, ol.commentlist ol ul, ol.commentlist ul ul { /* fix for nested lists in comment body */
+/* fix for nested lists in comment body */
+ol.commentlist ol ol, ol.commentlist ul ol, ol.commentlist ol ul, ol.commentlist ul ul { 
     margin-bottom:0;
 }
 
@@ -866,6 +869,23 @@ article div.fb_iframe_widget {
 }
 
 /* responsiveness! */
+
+/* Animagia.pl specific */
+@media(min-width: 961px) {
+    
+    nav#nav-main > a#menu-open,
+    nav#nav-main > #m1:target ~ a#menu-close,
+    nav#nav-main > #m1:target ~ a#menu-open {
+        display: none;
+    }
+}
+@media(max-width: 960px) {
+    #site-title {
+        margin: 0;
+        padding: 0;
+    }
+}
+/* end Animagia.pl specific */
 
 @media(max-width: 960px) {
     #menu-open, #menu-close {
