@@ -53,7 +53,7 @@ if (is_active_sidebar(1)) {
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 118)) {
                         echo ("This user bought Amagi!");
 
-                        $pure_string = time();
+                        $pure_string = "Amagi_01_" . time();
                         $key = CardStackAmConstants::getKey();
 
                         $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
@@ -65,9 +65,15 @@ if (is_active_sidebar(1)) {
                                 pack("H*", $obfuscated), MCRYPT_MODE_ECB, $iv);
 
 
-                        echo("staging.animagia.pl/vid/" . $obfuscated . " " . $decrypted_string);
+                        //echo("staging.animagia.pl/vid/" . $obfuscated . " " . $decrypted_string);
 
-                        echo("<p>" . CardStackAmConstants::getKey() . "</p>");
+                        echo("<h2>" . "Pliki do pobrania" . "</h2><p>");
+
+                        echo("<a href=\"" . CardStackAmConstants::getVidUrl() . "ddl/serve_file.php?token=" . $obfuscated . "\">");
+                        echo("[Animagia.pl] Amagi Brilliant Park 01 1080p.mkv");
+                        echo("</a>");
+
+                        echo("</p>");
                     }
                     ?>
 

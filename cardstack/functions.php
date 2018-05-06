@@ -312,7 +312,8 @@ function cardstack_customize_register($wp_customize) { //All sections, settings,
 
 add_action('customize_register', 'cardstack_customize_register');
 
-function cardstack_exclude_private_posts($query) { //option to exclude private posts from the loop so that they don't appear even to logged-in users
+//option to exclude private posts from the loop so that they don't appear even to logged-in users
+function cardstack_exclude_private_posts($query) { 
     if (get_theme_mod('hide_private_posts')) {
         if ($query->is_home() && $query->is_main_query()) {
             $query->set('post_status', 'publish');
@@ -399,6 +400,18 @@ class CardStackAm {
         }
 
         return $expiration;
+    }
+    
+    static function userCanStreamProduct($product_id) {
+        if (self::getSubStatus() == "invalid") {
+            return false;
+        }
+
+        if (wc_customer_bought_product(wp_get_current_user()->user_email, get_current_user_id(),
+                        $product_id)) {
+            return true;
+        }
+        return false;
     }
 
 }
