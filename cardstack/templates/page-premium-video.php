@@ -52,12 +52,22 @@ if (is_active_sidebar(1)) {
                 $cardstack_am_poster = "https://static.animagia.pl/Amagi" . $cardstack_am_episode .
                         ".jpg";
 
+                //$cardstack_am_manifest = CardStackAmConstants::getVidUrl() .
+                //        "dash/feelings.mpd";
+                
+                $cardstack_am_video = CardStackAmConstants::getVidUrl() . "dash/av/cs" .
+                        $cardstack_am_episode . ".webm";
+                
                 if ($cardstack_am_episode == "1"
                         || CardStackAm::userCanStreamProduct(118)) :
                     ?>
+                
+                    <video controls="true" style="width: 100%"
+                           poster="<?php echo $cardstack_am_poster; ?>"
+                           src="<?php echo $cardstack_am_video; ?>"
+                           preload="metadata" />
 
-                    <script src="https://static.animagia.pl/dash.all.min.js"></script>
-
+                    <?php/*<script src="https://static.animagia.pl/dash.all.min.js"></script>
 
                     <video id="am-dash-video" controls="true" style="width: 100%"
                            poster="<?php echo $cardstack_am_poster; ?>"></video>
@@ -72,7 +82,7 @@ if (is_active_sidebar(1)) {
                         }
 
                         startVideo();
-                    </script>
+                    </script>*/?>
 
                     <?php
                     

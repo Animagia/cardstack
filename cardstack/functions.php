@@ -444,16 +444,94 @@ add_filter( 'woocommerce_is_purchasable', 'cardstack_am_no_repeat_purchase', 10,
 
 remove_filter( 'the_content', 'wpautop' );
 
-
+// remove unnecessary junk from checkout process
  
 function cardstack_am_remove_checkout_phone( $fields ) {
 
     unset($fields['billing']['billing_phone']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_company']);
+
+    if (0 === $woocommerce->cart->total) {
+        unset($fields['billing_country']);
+        unset($fields['billing_first_name']);
+        unset($fields['billing_last_name']);
+        unset($fields['billing_address_1']);
+        unset($fields['billing_city']);
+        unset($fields['billing_state']);
+        unset($fields['billing_postcode']);
+    }
+
+//    unset($fields['billing']['billing_first_name']);
+//    unset($fields['billing']['billing_last_name']);
+//    unset($fields['billing']['billing_company']);
+//    unset($fields['billing']['billing_address_1']);
+//    unset($fields['billing']['billing_address_2']);
+//    unset($fields['billing']['billing_city']);
+//    unset($fields['billing']['billing_postcode']);
+//    unset($fields['billing']['billing_country']);
+//    unset($fields['billing']['billing_state']);
+//    unset($fields['billing']['billing_phone']);
+//    unset($fields['order']['order_comments']);
+//    unset($fields['billing']['billing_email']);
+//    unset($fields['account']['account_username']);
+//    unset($fields['account']['account_password']);
+//    unset($fields['account']['account_password-2']);
 
     return $fields;
 }
 
 add_filter( 'woocommerce_checkout_fields' , 'cardstack_am_remove_checkout_phone' );
 
+add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
 
-?>
+
+// Add checkboxes at checkout
+ 
+add_action( 'woocommerce_review_order_before_submit', 'cardstack_am_add_checkout_privacy_policy', 9 );
+   
+function cardstack_am_add_checkout_privacy_policy() {
+
+    woocommerce_form_field('am_privacy_policy',
+            array(
+        'type' => 'checkbox',
+        'class' => array('form-row privacy'),
+        'label_class' => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
+        'input_class' => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
+        'required' => true,
+        'label' => 'Akceptuję <a href="/regulamin">regulamin</a> oraz ' .
+        '<a href="/polityka_prywatnosci">politykę prywatności i ciasteczek</a>.',
+    ));
+
+    woocommerce_form_field('am_instant_access',
+            array(
+        'type' => 'checkbox',
+        'class' => array('form-row privacy'),
+        'label_class' => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
+        'input_class' => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
+        'required' => true,
+        'label' => 'Wyrażam zgodę na udostępnienie mi cyfrowych materiałów wideo natychmiast ' .
+        'po zakończeniu procesu płatności, ze świadomością, że od momentu ich udostępnienia ' .
+        'nie będzie już możliwości odstąpienia od umowy.',
+    ));
+}
+
+// Show notice if customer does not tick
+   
+add_action('woocommerce_checkout_process', 'cardstack_am_not_approved_privacy');
+add_action('woocommerce_checkout_process', 'cardstack_am_not_approved_instant_access');
+
+function cardstack_am_not_approved_privacy() {
+    if (!(int) isset($_POST['am_privacy_policy'])) {
+        wc_add_notice('Akceptacja regulaminu oraz polityki prywatności i ciasteczek jest wymagana.',
+                'error');
+    }
+}
+
+function cardstack_am_not_approved_instant_access() {
+    if (!(int) isset($_POST['am_instant_access'])) {
+        wc_add_notice('Zgoda na natychmiastowe udostępnienie materiałów wideo jest wymagana. ' .
+                'Zamówienie bez takiej zgody, z opóźnioną o 14 dni realizacją, ' .
+                'można złożyć wyłącznie mailowo.', 'error');
+    }
+}
