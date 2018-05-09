@@ -13,6 +13,18 @@
         wp_head();
         ?>
 
+        <?php
+        /* Animagia.pl-specific hack */
+        if (is_page_template('templates/page-premium-video.php')) {
+            print '<link href="https://static.animagia.pl/video-js.css" ' .
+                    ' rel="stylesheet" type="text/css" />' . PHP_EOL;
+            
+            print '<link href="https://static.animagia.pl/video-js-custom.css" ' .
+                    ' rel="stylesheet" type="text/css" />';
+        }
+        /* end hack */
+        ?>
+
     </head>
 
     <body <?php body_class(); ?>>

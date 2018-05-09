@@ -47,49 +47,32 @@ if (is_active_sidebar(1)) {
 
                 <?php
                 $cardstack_am_episode = explode(" ", get_the_title())[4];
-                $cardstack_am_manifest = CardStackAmConstants::getVidUrl() . "dash/manifest" .
-                        $cardstack_am_episode . ".mpd";
+                $cardstack_am_video = CardStackAmConstants::getVidUrl() .
+                        "dash/av/serve.vid.php/cs" . $cardstack_am_episode . ".webm";
                 $cardstack_am_poster = "https://static.animagia.pl/Amagi" . $cardstack_am_episode .
                         ".jpg";
 
-                //$cardstack_am_manifest = CardStackAmConstants::getVidUrl() .
-                //        "dash/feelings.mpd";
-                
                 $cardstack_am_video = CardStackAmConstants::getVidUrl() . "dash/av/cs" .
                         $cardstack_am_episode . ".webm";
-                
+
                 if ($cardstack_am_episode == "1"
                         || CardStackAm::userCanStreamProduct(118)) :
                     ?>
-                
-                    <video controls="true" style="width: 100%"
-                           poster="<?php echo $cardstack_am_poster; ?>"
-                           src="<?php echo $cardstack_am_video; ?>"
-                           preload="metadata" />
 
-                    <?php/*<script src="https://static.animagia.pl/dash.all.min.js"></script>
+                    <video class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
+                           controls="true" oncontextmenu="return false;"
+                           poster="<?php echo $cardstack_am_poster ?>" preload="metadata"
+                           data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'>
+                        <source src="<?php echo $cardstack_am_video ?>" type="video/webm" />
+                    </video>
 
-                    <video id="am-dash-video" controls="true" style="width: 100%"
-                           poster="<?php echo $cardstack_am_poster; ?>"></video>
-
-                    <script>
-                        function startVideo() {
-                            var url = "<?php echo $cardstack_am_manifest; ?>",
-                                    video = document.querySelector("#am-dash-video"),
-                                    player;
-                            player = dashjs.MediaPlayer({}).create();
-                            player.initialize(video, url, false);
-                        }
-
-                        startVideo();
-                    </script>*/?>
+                    <script src="https://static.animagia.pl/video.js"></script>
 
                     <?php
-                    
                     if ($cardstack_am_episode > 1) :
                         echo "następny odcinek";
                     endif;
-                    
+
                     if ($cardstack_am_episode < 12) :
                         echo "poprzedni odcinek";
                     endif;
