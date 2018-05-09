@@ -32,6 +32,47 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 
+<p>Kupujesz:</p>
+
+<table class="shop_table">
+<?php
+foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+    $_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item,
+            $cart_item_key);
+
+    if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_checkout_cart_item_visible',
+                    true, $cart_item, $cart_item_key)) {
+        ?>
+        <tr class="<?php
+        echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item,
+                        $cart_item_key));
+        ?>">
+            <td style="border-top: 1px solid #646464;" class="product-name">
+                <?php
+                echo apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item,
+                        $cart_item_key) . '&nbsp;';
+                ?>
+                <?php
+                echo apply_filters('woocommerce_checkout_cart_item_quantity',
+                        ' <strong class="product-quantity">' . sprintf('&times; %s',
+                                $cart_item['quantity']) . '</strong>', $cart_item, $cart_item_key);
+                ?>
+                <?php echo wc_get_formatted_cart_item_data($cart_item); ?>
+            </td>
+            <td style="border-top: 1px solid #646464;" style="border: 1px;" class="product-total">
+                <?php
+                echo apply_filters('woocommerce_cart_item_subtotal',
+                        WC()->cart->get_product_subtotal($_product, $cart_item['quantity']),
+                        $cart_item, $cart_item_key);
+                ?>
+            </td>
+        </tr>
+        <?php
+    }
+}
+?>
+</table>
+        
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 	<?php if ( $checkout->get_checkout_fields() ) : ?>
@@ -54,6 +95,16 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 	<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
 
+        <p>Sprzedaż jest zwolniona z VAT. Jeśli chcesz otrzymać fakturę, napisz do nas po dokonaniu zakupu.</p>
+        
+        <p>Ids of products in card:</p>
+            <?php
+        	foreach( WC()->cart->get_cart() as $cart_item_key => $values ) {
+		$_product = $values['data'];
+	
+		echo $_product->id;
+	}?>
+        
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
 	<div id="order_review" class="woocommerce-checkout-review-order">
