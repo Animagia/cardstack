@@ -535,3 +535,4 @@ function cardstack_am_not_approved_instant_access() {
                 'można złożyć wyłącznie mailowo.', 'error');
     }
 }
+
