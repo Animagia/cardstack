@@ -20,10 +20,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+
+foreach ($messages as $messageKey => $message) {
+    if (strpos($message, 'A subscription has been removed from your cart.') !== false) {
+        unset($messages[$messageKey]);
+    }
+}
+
+
 if ( ! $messages ) {
 	return;
 }
-return; //FIXME
+
 ?>
 
 <?php foreach ( $messages as $message ) : ?>

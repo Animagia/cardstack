@@ -536,3 +536,15 @@ function cardstack_am_not_approved_instant_access() {
     }
 }
 
+function cardstack_am_reset_pass_url() {
+    $siteURL = get_option('siteurl');
+    return "{$siteURL}/wp-login.php?action=lostpassword";
+}
+
+add_filter('lostpassword_url', 'cardstack_am_reset_pass_url', 11, 0);
+
+/* Customize Subscriptions plugin */
+
+remove_action('woocommerce_review_order_after_order_total', array(HForce_Subscription_Cart, 'display_recurring_totals'));
+remove_action('woocommerce_cart_totals_after_order_total', array(HForce_Subscription_Cart, 'display_recurring_totals'));
+

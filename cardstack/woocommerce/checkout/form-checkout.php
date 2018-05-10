@@ -93,17 +93,9 @@ foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 
 	<?php endif; ?>
 
-	<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
+	<h3 id="order_review_heading">Podsumowanie</h3>
 
         <p>Sprzedaż jest zwolniona z VAT. Jeśli chcesz otrzymać fakturę, napisz do nas po dokonaniu zakupu.</p>
-        
-        <p>Ids of products in card:</p>
-            <?php
-        	foreach( WC()->cart->get_cart() as $cart_item_key => $values ) {
-		$_product = $values['data'];
-	
-		echo $_product->id;
-	}?>
         
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

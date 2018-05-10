@@ -20,10 +20,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+foreach ($messages as $messageKey => $message) {
+    if (strpos($message, 'do koszyka.') !== false) {
+        unset($messages[$messageKey]);
+    }
+}
+
 if ( ! $messages ) {
 	return;
 }
-return; //FIXME
+
 ?>
 <ul class="woocommerce-error" role="alert">
 	<?php foreach ( $messages as $message ) : ?>
