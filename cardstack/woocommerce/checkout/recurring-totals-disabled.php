@@ -4,10 +4,30 @@ if (!defined('WPINC')) {
     die;
 }
 
-die("oops"); //FIXME
+
+
+
+?>
+
+<p>what</p>
+
+<?php foreach ($recurring_carts as $recurring_cart_key => $recurring_cart) : ?>
+        <?php if (0 == $recurring_cart->next_payment_date) : ?>
+            <?php continue; ?>
+        <?php endif; ?>
+    <tr class="order-total recurring-total">
+
+            <td colspan="2"><?php hf_cart_totals_order_total_html($recurring_cart);
+            var_dump($recurring_cart->next_payment_date);?></td>
+
+    </tr>
+<?php endforeach; ?>
+
+<?php
+/*
+?>
 
 $display_table_head = true;
-?>
 
 <tr class="recurring-totals">
     <th colspan="2"><?php esc_html_e('Recurring Totals', 'xa-woocommerce-subscription'); ?></th>
@@ -140,3 +160,5 @@ $display_table_head = true;
     <?php endif; ?>
     </tr>
 <?php endforeach; ?>
+
+ */
