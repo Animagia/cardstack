@@ -23,6 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 foreach ($messages as $messageKey => $message) {
     if (strpos($message, 'do koszyka.') !== false) {
         unset($messages[$messageKey]);
+    } else if (strpos($message, 'z koszyka ponieważ nie') !== false) {
+        unset($messages[$messageKey]);
     }
 }
 
