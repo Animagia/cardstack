@@ -1098,7 +1098,13 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 
 }
 
-/* ugly temporary hack */
+/* ugly temporary hacks below */
 .slides, .slide {
     overflow-y: hidden;
 }
+
+address {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+

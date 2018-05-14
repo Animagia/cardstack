@@ -38,10 +38,9 @@ if (is_active_sidebar(1)) {
 
                     echo ("<p>Status: " . $substatus . "</p>");
 
-                    $date = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
-                    $date->setTimestamp($cardstack_am->getExpirationDate());
-
                     if ($substatus == "expiring") {
+                        $date = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
+                        $date->setTimestamp($cardstack_am->getExpirationDate());
                         echo ("<p>Valid until: " . $date->format("Y-m-d H:i:s") . "</p>");
                     }
 
