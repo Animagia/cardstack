@@ -60,10 +60,11 @@ foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 <?php echo wc_get_formatted_cart_item_data($cart_item); ?>
             </td>
             <td style="border-top: 1px solid #646464;" style="border: 1px;" class="product-total">
-                <?php
-                echo apply_filters('woocommerce_cart_item_subtotal',
+                <?php 
+                $cardstack_am_subt = apply_filters('woocommerce_cart_item_subtotal',
                         WC()->cart->get_product_subtotal($_product, $cart_item['quantity']),
                         $cart_item, $cart_item_key);
+                echo str_replace('/ month', '/ miesiąc', $cardstack_am_subt);
                 ?>
             </td>
         </tr>

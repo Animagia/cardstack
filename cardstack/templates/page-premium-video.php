@@ -69,11 +69,11 @@ if (is_active_sidebar(1)) {
                     <script src="https://static.animagia.pl/video.js"></script>
 
                     <?php
-                    if ($cardstack_am_episode > 1) :
+                    if ($cardstack_am_episode < 12) :
                         echo "następny odcinek";
                     endif;
 
-                    if ($cardstack_am_episode < 12) :
+                    if ($cardstack_am_episode > 1) :
                         echo "poprzedni odcinek";
                     endif;
 

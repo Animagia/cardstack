@@ -403,15 +403,17 @@ class CardStackAm {
     }
     
     static function userCanStreamProduct($product_id) {
-        if (self::getSubStatus() == "invalid") {
-            return false;
-        }
 
         if (wc_customer_bought_product(wp_get_current_user()->user_email, get_current_user_id(),
                         $product_id)) {
             return true;
         }
-        return false;
+        
+        if (self::getSubStatus() == "invalid") {
+            return false;
+        }
+        
+        return true;
     }
 
 }
