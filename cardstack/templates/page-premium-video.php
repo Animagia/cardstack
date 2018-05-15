@@ -48,15 +48,12 @@ if (is_active_sidebar(1)) {
                 <?php
                 $cardstack_am_episode = explode(" ", get_the_title())[4];
                 $cardstack_am_video = CardStackAmConstants::getVidUrl() .
-                        "dash/av/serve.vid.php/cs" . $cardstack_am_episode . ".webm";
+                        "stream/serve_stream.php/Amagi" . $cardstack_am_episode . ".webm";
                 $cardstack_am_poster = "https://static.animagia.pl/Amagi" . $cardstack_am_episode .
                         ".jpg";
 
-                $cardstack_am_video = CardStackAmConstants::getVidUrl() . "dash/av/cs" .
-                        $cardstack_am_episode . ".webm";
-
                 if ($cardstack_am_episode == "1"
-                        || CardStackAm::userCanStreamProduct(118)) :
+                        || CardStackAm::userCanStreamProduct(39)) :
                     ?>
 
                     <video class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"

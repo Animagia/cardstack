@@ -202,6 +202,10 @@ article ul ul, article ul ol, article ol ul, article ol ol {
     padding-right: 0;
 }
 
+article p, article li {
+    text-align: justify;
+}
+
 blockquote {
     font-family: Cambria, serif;
     font-style: italic;

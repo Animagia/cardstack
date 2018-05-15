@@ -25,9 +25,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-<p>Dziękujemy za zakup! Wejdź na <a href="https://animagia.pl/konto">animagia.pl/konto</a>, żeby ściągnąć lub obejrzeć wideo.</p>
+<p>Dziękujemy za zakup! Wejdź na <a href="https://animagia.pl/konto">animagia.pl/konto</a>, żeby zacząć oglądać anime. Miłej zabawy!</p>
 
-<p>W przypadku jakichkolwiek problemów skontaktuj się z nami.</p>
+<p>Za Twoją zgodą cyfrowe materiały wideo zostały Ci natychmiast udostępnione w serwisie animagia.pl, w związku z czym nie możesz już odstąpić od umowy.</p>
+
+<p>W razie jakichkolwiek problemów skontaktuj się z nami, odpowiadając na ten mail.</p>
 
 <?php
 

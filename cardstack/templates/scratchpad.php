@@ -46,11 +46,11 @@ if (is_active_sidebar(1)) {
                     }
 
 
-                    //amagi id: 118
+                    //amagi id: 39
 
                     $current_user = wp_get_current_user();
 
-                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 118)) {
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 39)) {
                         echo ("This user bought Amagi!");
 
                         $pure_string = "Amagi_01_" . time();

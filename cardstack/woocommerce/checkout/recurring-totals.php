@@ -9,16 +9,19 @@ if (!defined('WPINC')) {
 
 ?>
 
-<p>what</p>
-
 <?php foreach ($recurring_carts as $recurring_cart_key => $recurring_cart) : ?>
         <?php if (0 == $recurring_cart->next_payment_date) : ?>
             <?php continue; ?>
         <?php endif; ?>
     <tr class="order-total recurring-total">
 
-            <td colspan="2"><?php hf_cart_totals_order_total_html($recurring_cart);
-            var_dump($recurring_cart->next_payment_date);?></td>
+            <td colspan="2"><?php
+//            hf_cart_totals_order_total_html($recurring_cart);
+//            var_dump($recurring_cart->next_payment_date);
+            $cardstack_am_first_renewal = new DateTime("now", new DateTimeZone('Europe/Warsaw'));
+            $cardstack_am_first_renewal->setTimestamp(strtotime($recurring_cart->next_payment_date));
+            echo('<small>Pierwsze automatyczne ponowienie: ' . $cardstack_am_first_renewal->format('d.m.Y') . "</small>" );
+            ?></td>
 
     </tr>
 <?php endforeach; ?>
