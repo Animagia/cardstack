@@ -27,8 +27,17 @@ if (is_active_sidebar(1)) {
 
                     wp_login_form();
 
+                    echo('<p><a href="https://animagia.pl/wp-login.php?action=lostpassword">Przypomnij hasło</a></p>');
+
                 else :
                     ?>
+
+                    <p>Zalogowano jako:
+                        <?php echo $current_user->user_email; ?>.
+
+                        <a href="<?php echo wp_logout_url(get_permalink()); ?>">Wyloguj</a> |
+                        <a href="https://animagia.pl/chpasswd">Zmień hasło</a>
+                    </p>
 
                     <h2>Konto premium</h2>
 
@@ -36,13 +45,16 @@ if (is_active_sidebar(1)) {
                     <?php
                     $substatus = $cardstack_am->getSubStatus();
 
-                    if ($substatus === "expiring") {
+                    if ($substatus === "expiring") { //expiring
                         $date = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
                         $date->setTimestamp($cardstack_am->getExpirationDate());
-                        echo ("<p><strong>Wygasające</strong>, ważne do: " . $date->format("Y-m-d H:i:s") . "</p>");
-                    } else if ($substatus === "active") {
-                        echo ("<p><strong>Aktywne.</strong> Jeśli chcesz zrezygnować, anuluj cykliczną płatność w " .
-                        "<a href=\"https://www.sandbox.paypal.com/myaccount/autopay\">PayPal</a>.</p>");
+                        echo ("<p><strong>Wygasające</strong>, ważne do: " . $date->format("Y-m-d H:i:s") .
+                        ". <a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">Zacznij oglądać anime!</a></p>");
+                    } else if ($substatus === "active") { //active
+                        echo ("<p><strong>Aktywne.</strong> " .
+                        "<a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">Zacznij oglądać anime!</a></p>" .
+                        "<p><small>Jeśli chcesz zrezygnować, <a href=\"https://www.sandbox.paypal.com/myaccount/autopay\">" .
+                        "anuluj cykliczną płatność</a> w PayPal.</small></p>");
                     } else {
                         echo ("<p>Nieaktywne.</p>");
                     }
@@ -55,7 +67,7 @@ if (is_active_sidebar(1)) {
                     echo ("<h2>Zakupione anime</h2>");
 
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 39)) {
-                        echo ("<p>Amagi Brilliant Park</p>");
+                        echo ("<p>Amagi Brilliant Park – <a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">zacznij oglądać</a></p>");
                     } else {
                         echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
@@ -106,7 +118,7 @@ if (is_active_sidebar(1)) {
                 <?php comments_template(); ?>
 
             <?php endwhile; ?>
-<?php endif; ?>
+        <?php endif; ?>
 
     </article></main>
 

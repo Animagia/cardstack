@@ -485,8 +485,8 @@ function cardstack_am_add_checkout_privacy_policy() {
         'label_class' => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
         'input_class' => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
         'required' => true,
-        'label' => 'Akceptuję <a href="/regulamin">regulamin</a> oraz ' .
-        '<a href="/polityka_prywatnosci">politykę prywatności i ciasteczek</a>.',
+        'label' => 'Akceptuję <a target="_blank" href="https://animagia.pl/regulamin">regulamin</a> oraz ' .
+        '<a target="_blank" href="https://animagia.pl/privacy">politykę prywatności i ciasteczek</a>.',
     ));
 
     woocommerce_form_field('am_instant_access',
