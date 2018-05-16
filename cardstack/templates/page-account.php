@@ -76,34 +76,7 @@ if (is_active_sidebar(1)) {
                     echo ("<h2>Pliki do pobrania</h2>");
 
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 39)) {
-                        echo("<p>");
-                        foreach (["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"] as
-                                    $cardstack_am_link_iter) {
-                            $pure_string = "Amagi_" . $cardstack_am_link_iter . "_" . time();
-                            $key = CardStackAmConstants::getKey();
-
-                            $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
-                            $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-                            $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key,
-                                            utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv));
-
-                            $decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, $key,
-                                    pack("H*", $obfuscated), MCRYPT_MODE_ECB, $iv);
-
-
-                            //echo("staging.animagia.pl/vid/" . $obfuscated . " " . $decrypted_string);
-
-                            echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
-                            "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
-                            echo("[Animagia.pl] Amagi Brilliant Park " . $cardstack_am_link_iter .
-                            " 1080p.mkv");
-                            echo("</a>");
-
-                            if ($cardstack_am_link_iter !== "12") {
-                                echo "<br />";
-                            }
-                        }
-                        echo("</p>");
+                        $cardstack_am->printAmagiLinks();
                     } else {
                         echo ("<p>Brak plików. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");

@@ -52,6 +52,10 @@ if (is_active_sidebar(1)) {
                 $cardstack_am_poster = "https://static.animagia.pl/Amagi" . $cardstack_am_episode .
                         ".jpg";
 
+                if ($cardstack_am_episode == "1") {
+                    echo "<p>Promocja premierowa! Pierwszy odcinek w full HD do bezpłatnego oglądania, bez reklam.</p>";
+                }
+
                 if ($cardstack_am_episode == "1"
                         || CardStackAm::userCanStreamProduct(39)) :
                     ?>
@@ -66,19 +70,30 @@ if (is_active_sidebar(1)) {
                     <script src="https://static.animagia.pl/video.js"></script>
 
                     <?php
-                    if ($cardstack_am_episode < 12) :
-                        echo "następny odcinek";
-                    endif;
+                    echo "<p style=\"margin-top: 18px; text-align: center;\">";
+
 
                     if ($cardstack_am_episode > 1) :
-                        echo "poprzedni odcinek";
+                        echo '<a href="https://animagia.pl/amagi-brilliant-park-odc-' .
+                        strval(intval($cardstack_am_episode) + -1) . '/">« poprzedni odcinek</a>';
                     endif;
 
+                    if ($cardstack_am_episode > 1 && $cardstack_am_episode < 12) {
+                        echo ' | ';
+                    }
+
+                    if ($cardstack_am_episode < 12) :
+                        echo '<a href="https://animagia.pl/amagi-brilliant-park-odc-' .
+                        strval(intval($cardstack_am_episode) + 1) . '/">następny odcinek »</a>';
+                    endif;
+                    echo "</p>";
+
                 else :
-                    echo "<p>Ten odcinek nie jest jeszcze dostępny do bezpłatnego oglądania. " .
-                    "Nie czekaj! Załóż konto premium lub kup cyfrową kopię.</p>";
-                endif;
-                ?> 
+                    ?>
+                    <p>Ten odcinek nie jest jeszcze dostępny do bezpłatnego oglądania.
+                        Nie czekaj! Załóż <a href="https://animagia.pl/sklep/">konto premium</a>
+                        lub kup <a href="https://animagia.pl/sklep/">cyfrową kopię</a>.</p>
+                <?php endif; ?> 
 
                 <?php comments_template(); ?>
 
