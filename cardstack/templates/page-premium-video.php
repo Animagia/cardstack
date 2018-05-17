@@ -46,9 +46,13 @@ if (is_active_sidebar(1)) {
 
 
                 <?php
+                $cardstack_am_pure_stream_str = "Amagi_" . $cardstack_am_link_iter . "_" . time() .
+                        "_" . $_SERVER['REMOTE_ADDR'];
+                $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
                 $cardstack_am_episode = explode(" ", get_the_title())[4];
                 $cardstack_am_video = CardStackAmConstants::getVidUrl() .
-                        "stream/serve_stream.php/Amagi" . $cardstack_am_episode . ".webm";
+                        "stream/serve_stream.php/Amagi" . $cardstack_am_episode . ".webm?token=" .
+                        $cardstack_am_stream_token;
                 $cardstack_am_poster = "https://static.animagia.pl/Amagi" . $cardstack_am_episode .
                         ".jpg";
 
@@ -60,14 +64,25 @@ if (is_active_sidebar(1)) {
                         || CardStackAm::userCanStreamProduct(39)) :
                     ?>
 
-                    <video class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
+                    <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->
+                    <video id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
                            controls="true" oncontextmenu="return false;"
                            poster="<?php echo $cardstack_am_poster ?>" preload="metadata"
-                           data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'>
+                           data-setup='{}'>
                         <source src="<?php echo $cardstack_am_video ?>" type="video/webm" />
                     </video>
 
                     <script src="https://static.animagia.pl/video.js"></script>
+
+                    <script>
+                        var vid1 = videojs('amagi');
+                        vid1.on('dblclick', function () {
+                            vid1.requestFullscreen();
+                        });
+                        vid1.on('dblclick', function () {
+                            vid1.exitFullscreen();
+                        });
+                    </script>
 
                     <?php
                     echo "<p style=\"margin-top: 18px; text-align: center;\">";

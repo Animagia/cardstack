@@ -416,21 +416,29 @@ class CardStackAm {
         return true;
     }
     
+    static function obfuscateString($pure_string) {
+            $key = CardStackAmConstants::getKey();
+            $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+            $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+            $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                            MCRYPT_MODE_ECB, $iv));
+            return $obfuscated;
+    }
+    
     static function printAmagiLinks() {
+        self::printIpNotice();
+
         echo("<p>");
         foreach (["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"] as
                     $cardstack_am_link_iter) {
-            $pure_string = "Amagi_" . $cardstack_am_link_iter . "_" . time();
+            $pure_string = "Amagi_" . $cardstack_am_link_iter . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
             $key = CardStackAmConstants::getKey();
 
             $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
             $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
             $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
                             MCRYPT_MODE_ECB, $iv));
-
-            $decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, $key, pack("H*", $obfuscated),
-                    MCRYPT_MODE_ECB, $iv);
-
+            
             echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
             "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
             echo("[Animagia.pl] Amagi Brilliant Park " . $cardstack_am_link_iter .
@@ -441,6 +449,19 @@ class CardStackAm {
                 echo "<br />";
             }
         }
+        echo("</p>");
+    }
+
+    static function printIpNotice() {
+        echo("<p>");
+
+        echo '<strong>Uwaga:</strong> ' .
+        'pliki wideo są wolne od ograniczeń technicznych, ale przeznaczone tylko do Twojego ' .
+        '<strong>osobistego użytku</strong> i nie mogą być udostępniane innym osobom, ' .
+        'chyba że przepisy prawa stanowią inaczej. Ustawa o prawie autorskim i prawach pokrewnych ' .
+        'przewiduje odpowiedzialność karną za rozpowszechnianie cudzych utworów bez uprawnienia. ' .
+        '<strong>Szanuj prawa nasze i japońskich twórców.</strong>';
+
         echo("</p>");
     }
 

@@ -202,9 +202,9 @@ article ul ul, article ul ol, article ol ul, article ol ol {
     padding-right: 0;
 }
 
-article p, article li {
+/*article p, article li {
     text-align: justify;
-}
+}*/
 
 blockquote {
     font-family: Cambria, serif;
@@ -887,6 +887,14 @@ article div.fb_iframe_widget {
     #site-title {
         margin: 0;
         padding: 0;
+    }
+    
+    #titular-logo {
+        padding: 5px !important;
+        box-sizing: border-box !important;
+        margin-bottom: 5px !important;
+        margin-top: 3px !important;
+        max-height: 70px !important;
     }
 }
 /* end Animagia.pl specific */

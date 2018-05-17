@@ -28,6 +28,8 @@ if (is_active_sidebar(1)) {
                     wp_login_form();
 
                     echo('<p><a href="https://animagia.pl/wp-login.php?action=lostpassword">Przypomnij hasło</a></p>');
+                    echo '<p>Konto możesz założyć przy pierwszym zakupie w naszym sklepie. '
+                    . 'By oglądać odcinki dostępne bezpłatnie, nie musisz zakładać konta.</p>';
 
                 else :
                     ?>
