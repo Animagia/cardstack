@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   height="96"
+   width="96"
+   version="1.1"
+   viewBox="0 0 96 96"
+   data-name="Layer 1"
+   id="Layer_1">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>flogo_RGB_HEX-72</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#4267b2;}.cls-2{fill:#fff;}</style>
+  </defs>
+  <title
+     id="title6">flogo_RGB_HEX-72</title>
+  <g
+     transform="translate(0,-8)"
+     id="g3721">
+    <path
+       class="cls-1"
+       d="M 68,8 H 4 a 4,4 0 0 0 -4,4 v 64 a 4,4 0 0 0 4,4 H 38.46 V 52.16 h -9.35 v -10.9 h 9.35 v -8 c 0,-9.3 5.68,-14.37 14,-14.37 a 77.46,77.46 0 0 1 8.38,0.43 V 29 H 55.1 c -4.51,0 -5.39,2.15 -5.39,5.3 v 6.94 H 60.5 l -1.4,10.9 H 49.71 V 80 H 68 a 4,4 0 0 0 4,-4 V 12 A 4,4 0 0 0 68,8 Z"
+       id="path8"
+       style="fill:#4267b2" />
+    <path
+       id="f"
+       class="cls-2"
+       d="M 49.71,80 V 52.16 h 9.39 l 1.4,-10.9 H 49.71 v -6.94 c 0,-3.15 0.88,-5.3 5.39,-5.3 h 5.72 V 19.3 a 77.46,77.46 0 0 0 -8.38,-0.43 c -8.3,0 -14,5.07 -14,14.37 v 8 h -9.33 v 10.9 h 9.35 V 80 Z"
+       style="fill:#ffffff" />
+  </g>
+</svg>

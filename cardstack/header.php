@@ -81,6 +81,8 @@
 <?php
 if (has_nav_menu('cardstack_nav_menu')) :
 
+	echo "<ul>";
+
     $cardstack_menuArgs = array(
         'theme_location' => 'cardstack_nav_menu',
         'container' => false,
@@ -94,13 +96,20 @@ if (has_nav_menu('cardstack_nav_menu')) :
         'after' => '',
         'link_before' => '',
         'link_after' => '',
-        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'items_wrap' => '%3$s', //'<ul id="%1$s" class="%2$s">%3$s</ul>'
         'depth' => 2,
         'walker' => ''
     );
 
     wp_nav_menu($cardstack_menuArgs);
+    
     ?>
+	<li><a style="background-image: url(<?php print get_template_directory_uri() . '/fbbtn_plain.svg'?>);
+	background-size: contain; background-repeat: no-repeat; background-position: right;
+	box-sizing: border-box; padding-right: 40px; color: #4267b2;"
+	id="home-link" href="https://facebook.com/WydawnictwoAnimagia">Polub nas</a></li></ul>
+    
+
 
                 <?php else : ?>
 

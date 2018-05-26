@@ -429,7 +429,7 @@ class CardStackAm {
         self::printIpNotice();
 
         echo("<p>");
-        foreach (["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"] as
+        foreach (["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "NCOP", "NCED"] as
                     $cardstack_am_link_iter) {
             $pure_string = "Amagi_" . $cardstack_am_link_iter . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
             $key = CardStackAmConstants::getKey();
@@ -445,11 +445,15 @@ class CardStackAm {
             " 1080p.mkv");
             echo("</a>");
 
-            if ($cardstack_am_link_iter !== "12") {
+            if ($cardstack_am_link_iter !== "NCED") {
                 echo "<br />";
             }
         }
         echo("</p>");
+        
+        echo("<p>Polskie napisy są połączeniem dwóch tłumaczeń, z których po jednym wykonały Studio PDK " .
+                "i wydawnictwo Animagia.pl. Zobacz <a href=\"https://animagia.pl/credits\">" .
+                "uzanania autorstwa</a>.</p>");
     }
 
     static function printIpNotice() {
@@ -577,6 +581,17 @@ function cardstack_am_reset_pass_url() {
 }
 
 add_filter('lostpassword_url', 'cardstack_am_reset_pass_url', 11, 0);
+
+function cardstack_amreplacePayPalIcon($iconUrl) {
+	return get_bloginfo('stylesheet_directory') . '/pp_all_cards.png';
+}
+ 
+add_filter('woocommerce_paypal_icon', 'cardstack_amreplacePayPalIcon');
+
+function cardstack_am_wc_empty_cart_redirect_url() {
+	return 'https://animagia.pl/sklep/';
+}
+add_filter( 'woocommerce_return_to_shop_redirect', 'cardstack_am_wc_empty_cart_redirect_url' );
 
 /* Customize Subscriptions plugin */
 
