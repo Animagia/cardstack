@@ -60,8 +60,7 @@ if (is_active_sidebar(1)) {
                     echo "<p>Promocja premierowa! Pierwszy odcinek w full HD do bezpłatnego oglądania, bez reklam.</p>";
                 }
 
-                if ($cardstack_am_episode == "1"
-                        || CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
+                if ($cardstack_am_episode == "1" || CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
                     ?>
 
                     <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->
@@ -89,7 +88,7 @@ if (is_active_sidebar(1)) {
 
 
                     if ($cardstack_am_episode > 1) :
-                        echo '<a href="https://animagia.pl/amagi-brilliant-park-odc-' .
+                        echo '<a href="' . get_home_url() . '/amagi-brilliant-park-odc-' .
                         strval(intval($cardstack_am_episode) + -1) . '/">« poprzedni odcinek</a>';
                     endif;
 
@@ -98,7 +97,7 @@ if (is_active_sidebar(1)) {
                     }
 
                     if ($cardstack_am_episode < 12) :
-                        echo '<a href="https://animagia.pl/amagi-brilliant-park-odc-' .
+                        echo '<a href="' . get_home_url() . '/amagi-brilliant-park-odc-' .
                         strval(intval($cardstack_am_episode) + 1) . '/">następny odcinek »</a>';
                     endif;
                     echo "</p>";
@@ -106,8 +105,8 @@ if (is_active_sidebar(1)) {
                 else :
                     ?>
                     <p>Ten odcinek nie jest jeszcze dostępny do bezpłatnego oglądania.
-                        Nie czekaj! Załóż <a href="https://animagia.pl/sklep/">konto premium</a>
-                        lub kup <a href="https://animagia.pl/sklep/">cyfrową kopię</a>.</p>
+                        Nie czekaj! Załóż <a href="<?php echo get_home_url() ?>/sklep/">konto premium</a>
+                        lub kup <a href="<?php echo get_home_url() ?>/sklep/">cyfrową kopię</a>.</p>
                 <?php endif; ?> 
 
                 <?php comments_template(); ?>
