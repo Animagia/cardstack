@@ -61,7 +61,7 @@ if (is_active_sidebar(1)) {
                 }
 
                 if ($cardstack_am_episode == "1"
-                        || CardStackAm::userCanStreamProduct(39)) :
+                        || CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
                     ?>
 
                     <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->

@@ -476,8 +476,8 @@ $cardstack_am = new CardStackAm();
 
 
 function cardstack_am_no_repeat_purchase( $purchasable, $product ) {
-    $premium = 78;
-    $amagi = 39;
+    $premium = CardStackAmConstants::getPremiumServiceId();
+    $amagi = CardStackAmConstants::getAmagiId();
     
     $product_id = $product->id;
     

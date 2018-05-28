@@ -61,14 +61,12 @@ if (is_active_sidebar(1)) {
                         echo ("<p>Nieaktywne.</p>");
                     }
 
-
-                    //amagi id: 39
-
                     $current_user = wp_get_current_user();
 
                     echo ("<h2>Zakupione anime</h2>");
 
-                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 39)) {
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
+                                    CardStackAmConstants::getAmagiId())) {
                         echo ("<p>Amagi Brilliant Park – <a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">zacznij oglądać</a></p>");
                     } else {
                         echo ("<p>Brak zakupionych anime. " .
@@ -77,7 +75,8 @@ if (is_active_sidebar(1)) {
 
                     echo ("<h2>Pliki do pobrania</h2>");
 
-                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 39)) {
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
+                                    CardStackAmConstants::getAmagiId())) {
                         $cardstack_am->printAmagiLinks();
                     } else {
                         echo ("<p>Brak plików. " .
@@ -92,8 +91,8 @@ if (is_active_sidebar(1)) {
 
                 <?php comments_template(); ?>
 
-            <?php endwhile; ?>
-        <?php endif; ?>
+    <?php endwhile; ?>
+<?php endif; ?>
 
     </article></main>
 
