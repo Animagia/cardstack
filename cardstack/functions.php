@@ -426,6 +426,15 @@ class CardStackAm {
     }
     
     static function printAmagiLinks() {
+        if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+            ?>
+                            <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
+                                jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
+                                w innym kraju UE.</p>
+            <?php
+            return;
+        }
+
         self::printIpNotice();
 
         echo("<p>");

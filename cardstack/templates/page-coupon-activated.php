@@ -24,8 +24,13 @@ if (is_active_sidebar(1)) {
 
                 <?php
                 if (empty($_POST["code"])) {
-
                     echo "<p>Coś poszło nie tak. <a href=\"https://animagia.pl/kupon\">Powrót</a>";
+                } else if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+                    ?>
+                    <p>Aktywacja kuponów działa tylko w Polsce. Kupon pozostał niewykorzystany.
+                        Skontaktuj się z nami, jeśli kraj rozpoznano niepoprawnie,
+                        lub jeśli tymczasowo przebywasz w innym kraju UE.</p>
+                    <?php
                 } else {
 
                     $cardstack_am_c_flag = true;

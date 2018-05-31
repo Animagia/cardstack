@@ -60,7 +60,18 @@ if (is_active_sidebar(1)) {
                     echo "<p>Promocja premierowa! Pierwszy odcinek w full HD do bezpłatnego oglądania, bez reklam.</p>";
                 }
 
-                if ($cardstack_am_episode == "1" || CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
+
+
+                if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+                    $cardstack_am_video = "";
+                    /*?>
+                    <p>Wideo działa tylko w Polsce. Skontaktuj się z nami, jeśli kraj rozpoznano
+                        niepoprawnie, lub jeśli tymczasowo przebywasz w innym kraju UE.</p>
+                    <?php*/
+                }
+
+                if ($cardstack_am_episode == "1" ||
+                        CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
                     ?>
 
                     <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->
