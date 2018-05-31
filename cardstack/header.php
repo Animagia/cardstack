@@ -34,7 +34,7 @@
 
             <?php
 
-            if (!is_singular()) {
+            if (!is_singular() || is_front_page()) {
                 print('<h1 ' . $cardstack_additionalClass . ' id="site-title">');
             } else {
                 print('<p ' . $cardstack_additionalClass . ' id="site-title">');

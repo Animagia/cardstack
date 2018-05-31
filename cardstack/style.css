@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-h1 {
+h1, p.demoted-title {
     margin-bottom: 0.45rem;
     letter-spacing: 0.02em;
     text-align: left;
