@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ($_GET["coupon"] !== "yes") {
+if ($_GET["coupon"] !== "yes" || WC_Geolocation::geolocate_ip()['country'] !== 'PL') {
 	return;
 }
 

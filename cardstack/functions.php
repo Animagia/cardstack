@@ -602,6 +602,20 @@ function cardstack_am_wc_empty_cart_redirect_url() {
 }
 add_filter( 'woocommerce_return_to_shop_redirect', 'cardstack_am_wc_empty_cart_redirect_url' );
 
+
+/* block PayPal in countries other than Poland */
+
+function cardstack_am_disable_countries($available_gateways) {
+    global $woocommerce;
+    if (isset($available_gateways['paypal'])  && WC_Geolocation::geolocate_ip()['country'] !== 'PL' ) {
+        unset($available_gateways['paypal']);
+    }
+    return $available_gateways;
+}
+
+add_filter( 'woocommerce_available_payment_gateways', 'cardstack_am_disable_countries' );
+
+
 /* Customize Subscriptions plugin */
 
 remove_action('woocommerce_review_order_after_order_total', array(HForce_Subscription_Cart, 'display_recurring_totals'));
