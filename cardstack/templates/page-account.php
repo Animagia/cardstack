@@ -74,11 +74,22 @@ if (is_active_sidebar(1)) {
                     }
 
                     echo ("<h2>Pliki do pobrania</h2>");
+                    
+                    if($substatus === "expiring" || $substatus === "active") {
+                        echo ("<h3>Aruku to Iu Koto</h3>");
+                        $cardstack_am->printArukuLink();
+                    }
+                    
+                    if($substatus === "expiring" || $substatus === "active") {
+                        echo ("<h3>Łososik (Shake-chan)</h3>");
+                        $cardstack_am->printShakeLink();
+                    }
 
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
                                     CardStackAmConstants::getAmagiId())) {
+                        echo ("<h3>Amagi Brilliant Park</h3>");
                         $cardstack_am->printAmagiLinks();
-                    } else {
+                    } else if ($substatus === "invalid") {
                         echo ("<p>Brak plików. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }

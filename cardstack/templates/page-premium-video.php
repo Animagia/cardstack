@@ -58,6 +58,9 @@ if (is_active_sidebar(1)) {
                         "_" . $_SERVER['REMOTE_ADDR'];
                 $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
                 $cardstack_am_episode = explode(" ", get_the_title())[4];
+                if($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
+                    $cardstack_am_episode = $cardstack_am_episode . 'a';
+                }
                 $cardstack_am_video = CardStackAmConstants::getVidUrl() .
                         "stream/serve_stream.php/Amagi" . $cardstack_am_episode . ".webm?token=" .
                         $cardstack_am_stream_token;
@@ -65,7 +68,15 @@ if (is_active_sidebar(1)) {
                         ".jpg";
 
                 if ($cardstack_am_episode == "1") {
-                    echo "<p>Promocja premierowa! Pierwszy odcinek w full HD do bezpłatnego oglądania, bez reklam.</p>";
+                    echo '<p>Jeśli wolisz napisy bez tytułów grzecznościowych, przejdź <a href="'
+                    . get_home_url() . '/?altsub=yes">tutaj</a>.</p>';
+                } else if($cardstack_am_episode == "1a") {
+                    echo '<p>Alternatywne napisy bez tytułów grzecznościowych, z zachodnią kolejnością imion. <a href="' 
+                    . get_home_url() . '/sklep">Wersja do ściągnięcia</a> ma już oba warianty napisów w jednym pliku.</p>';
+                } else if(!CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) {
+                    echo '<p>Polecamy <a href="' 
+                    . get_home_url() . '/sklep">wersję do ściągnięcia</a>. Najwyższa jakość, po dwa warianty napisów i audio,'
+					. ' Twoja na zawsze!</p>';
                 }
 
 
@@ -78,7 +89,8 @@ if (is_active_sidebar(1)) {
                     <?php*/
                 }
 
-                if ($cardstack_am_episode == "1" ||
+                if ($cardstack_am_episode == "1" || $cardstack_am_episode == "1a" || $cardstack_am_episode == "2" ||
+						$cardstack_am_episode == "3" || $cardstack_am_episode == "4" ||
                         CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
                     ?>
 
@@ -136,4 +148,3 @@ if (is_active_sidebar(1)) {
     </article></main>
 
 <?php get_footer(); ?>
-	

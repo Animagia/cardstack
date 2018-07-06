@@ -401,36 +401,84 @@ class CardStackAm {
 
         return $expiration;
     }
-    
+
     static function userCanStreamProduct($product_id) {
 
         if (wc_customer_bought_product(wp_get_current_user()->user_email, get_current_user_id(),
                         $product_id)) {
             return true;
         }
-        
+
         if (self::getSubStatus() == "invalid") {
             return false;
         }
-        
+
         return true;
     }
-    
+
     static function obfuscateString($pure_string) {
-            $key = CardStackAmConstants::getKey();
-            $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
-            $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-            $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
-                            MCRYPT_MODE_ECB, $iv));
-            return $obfuscated;
+        $key = CardStackAmConstants::getKey();
+        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                        MCRYPT_MODE_ECB, $iv));
+        return $obfuscated;
     }
-    
+
+    static function printArukuLink() {
+
+        echo("<p>");
+
+        $pure_string = "Aruku_" . "00" . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
+        $key = CardStackAmConstants::getKey();
+
+        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                        MCRYPT_MODE_ECB, $iv));
+
+        echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
+        "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
+        echo("[Animagia.pl] Aruku to Iu Koto 1080p.mkv");
+        echo("</a>");
+
+        echo("</p>");
+
+        echo("<p>Aruku to Iu Koto i jego tłumaczenie są na otwartej licencji. " .
+        "Zobacz <a href=\"https://animagia.pl/credits\">" .
+        "uzanania autorstwa</a>.</p>");
+    }
+
+    static function printShakeLink() {
+
+        echo("<p>");
+
+        $pure_string = "Shake_" . "00" . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
+        $key = CardStackAmConstants::getKey();
+
+        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                        MCRYPT_MODE_ECB, $iv));
+
+        echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
+        "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
+        echo("[Animagia.pl] Shake-chan 720p.mkv");
+        echo("</a>");
+
+        echo("</p>");
+
+        echo("<p>Shake-chan i jego tłumaczenie są na otwartej licencji. " .
+        "Zobacz <a href=\"https://animagia.pl/credits\">" .
+        "uzanania autorstwa</a>.</p>");
+    }
+
     static function printAmagiLinks() {
         if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
             ?>
-                            <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
-                                jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
-                                w innym kraju UE.</p>
+                                                    <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
+                                                        jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
+                                                        w innym kraju UE.</p>
             <?php
             return;
         }
@@ -447,7 +495,7 @@ class CardStackAm {
             $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
             $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
                             MCRYPT_MODE_ECB, $iv));
-            
+
             echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
             "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
             echo("[Animagia.pl] Amagi Brilliant Park " . $cardstack_am_link_iter .
@@ -459,17 +507,17 @@ class CardStackAm {
             }
         }
         echo("</p>");
-        
+
         echo("<p>Polskie napisy są połączeniem dwóch tłumaczeń, z których po jednym wykonały Studio PDK " .
-                "i wydawnictwo Animagia.pl. Zobacz <a href=\"https://animagia.pl/credits\">" .
-                "uzanania autorstwa</a>.</p>");
+        "i wydawnictwo Animagia.pl. Zobacz <a href=\"https://animagia.pl/credits\">" .
+        "uzanania autorstwa</a>.</p>");
     }
 
     static function printIpNotice() {
         echo("<p>");
 
         echo '<strong>Uwaga:</strong> ' .
-        'pliki wideo są wolne od ograniczeń technicznych, ale przeznaczone tylko do Twojego ' .
+        'poniższe pliki wideo są wolne od ograniczeń technicznych, ale przeznaczone tylko do Twojego ' .
         '<strong>osobistego użytku</strong> i nie mogą być udostępniane innym osobom, ' .
         'chyba że przepisy prawa stanowią inaczej. Ustawa o prawie autorskim i prawach pokrewnych ' .
         'przewiduje odpowiedzialność karną za rozpowszechnianie cudzych utworów bez uprawnienia. ' .
@@ -481,8 +529,6 @@ class CardStackAm {
 }
 
 $cardstack_am = new CardStackAm();
-
-
 
 function cardstack_am_no_repeat_purchase( $purchasable, $product ) {
     $premium = CardStackAmConstants::getPremiumServiceId();
