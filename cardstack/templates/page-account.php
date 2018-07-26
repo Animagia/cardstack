@@ -51,7 +51,7 @@ if (is_active_sidebar(1)) {
                         $date = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
                         $date->setTimestamp($cardstack_am->getExpirationDate());
                         echo ("<p><strong>Wygasające</strong>, ważne do: " . $date->format("Y-m-d H:i:s") .
-                        ". <a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">Zacznij oglądać anime!</a></p>");
+                        ". <a href=\"https://animagia.pl/\">Zacznij oglądać anime!</a></p>");
                     } else if ($substatus === "active") { //active
                         echo ("<p><strong>Aktywne.</strong> " .
                         "<a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">Zacznij oglądać anime!</a></p>" .
@@ -65,10 +65,21 @@ if (is_active_sidebar(1)) {
 
                     echo ("<h2>Zakupione anime</h2>");
 
+					$cardstack_am_can_watch_anything = false;
+	
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
                                     CardStackAmConstants::getAmagiId())) {
                         echo ("<p>Amagi Brilliant Park – <a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">zacznij oglądać</a></p>");
-                    } else {
+						$cardstack_am_can_watch_anything = true;
+                    }
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318) ||
+					   				$current_user->user_email === "tomasz.lewoc@protonmail.com"
+					   ) {
+                        echo ("<p>Chuunibyou demo Koi ga Shitai! Take On Me
+						– <a href=\"https://animagia.pl/chuunibyou-take-on-me/\">zacznij oglądać</a></p>");
+						$cardstack_am_can_watch_anything = true;
+                    }
+					if(!$cardstack_am_can_watch_anything) {
                         echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }

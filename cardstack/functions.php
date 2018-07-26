@@ -366,6 +366,13 @@ class CardStackAm {
     }
 
     static function getSubStatus() {
+        
+        if (in_array(wp_get_current_user()->user_email,
+                        CardStackAmConstants::getEmailsUsedBySiteOwner())) {
+            return "active";
+        }
+        
+        
         $expiring = false;
 
         $subscriptions = hforce_get_users_subscriptions();
@@ -403,7 +410,6 @@ class CardStackAm {
     }
 
     static function userCanStreamProduct($product_id) {
-
         if (wc_customer_bought_product(wp_get_current_user()->user_email, get_current_user_id(),
                         $product_id)) {
             return true;
@@ -701,6 +707,18 @@ function dequeue_woocommerce_styles_scripts() {
             wp_dequeue_script( 'jqueryui' );
         }
     }
+}
+
+/* when product is added to cart, remove other products */
+add_filter( 'woocommerce_add_cart_item_data', 'cardstack_am_only_one_in_cart' );
+
+function cardstack_am_only_one_in_cart( $cart_item_data ) {
+
+    global $woocommerce;
+    $woocommerce->cart->empty_cart();
+
+    // Do nothing with the data and return
+    return $cart_item_data;
 }
 
 
