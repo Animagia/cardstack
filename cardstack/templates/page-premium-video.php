@@ -69,10 +69,10 @@ if (is_active_sidebar(1)) {
 
                 if ($cardstack_am_episode == "1") {
                     echo '<p>Jeśli wolisz napisy bez tytułów grzecznościowych, przejdź <a href="'
-                    . get_home_url() . '/?altsub=yes">tutaj</a>.</p>';
+                    . get_home_url() . '/amagi-brilliant-park-odc-1' .  '/?altsub=yes">tutaj</a>.</p>';
                 } else if($cardstack_am_episode == "1a") {
                     echo '<p>Alternatywne napisy bez tytułów grzecznościowych, z zachodnią kolejnością imion. <a href="' 
-                    . get_home_url() . '/sklep">Wersja do ściągnięcia</a> ma już oba warianty napisów w jednym pliku.</p>';
+                    . get_home_url() . '/sklep">Wersja do ściągnięcia</a> ma oba warianty napisów w jednym pliku.</p>';
                 } else if(!CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) {
                     echo '<p>Polecamy <a href="' 
                     . get_home_url() . '/sklep">wersję do ściągnięcia</a>. Najwyższa jakość, po dwa warianty napisów i audio,'
