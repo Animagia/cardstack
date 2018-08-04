@@ -1,10 +1,7 @@
-Card Stack, a theme for WordPress
-Copyright 2018 Animagia.pl
+Card Stack, a theme for WordPress with a focus on selling streamable and downloadable videos.
 
-(intended to be FLOSS, license tbd)
+Copyright 2018 Wydawnictwo Animagia.pl. Available under GPLv3.
 
-This theme can be used to build sites in any language that WordPress itself has been translated into, because it only uses pre-translated strings that come with WordPress on the page itself. Make sure you've installed the appropriate WordPress localization and set the language of your site in WordPress' settings accordingly.
+Includes code from WooCommerce (https://github.com/woocommerce/woocommerce), which is licensed under GPLv3.
 
-Theme configuration in the admin panel is English-only.
-
-This theme handles Featured Images in an unusual way. Such images are not displayed by the theme at all - support for them is included only for use with various third party widgets and plugins.
+Includes code from Subscriptions for WooCommerce by WebToffee (https://plugins.trac.wordpress.org/browser/xa-woocommerce-subscriptions/). The open source version of the plugin has been taken down by its authors, but code released before then is still available under GPLv3.
