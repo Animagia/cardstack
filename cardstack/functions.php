@@ -348,7 +348,8 @@ class CardStackAm {
     }
 
     static function isActive($sub) {
-        return (self::getStatus($sub) == "active");
+        $subStatus = self::getStatus($sub);
+        return ($subStatus === "active" || $subStatus === "on-hold");
     }
 
     static function isExpiring($sub) {
