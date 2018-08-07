@@ -85,6 +85,7 @@ if (is_active_sidebar(1)) {
                     }
 
                     echo ("<h2>Pliki do pobrania</h2>");
+					
                     
                     if($substatus === "expiring" || $substatus === "active") {
                         echo ("<h3>Aruku to Iu Koto</h3>");
@@ -95,12 +96,21 @@ if (is_active_sidebar(1)) {
                         echo ("<h3>Łososik (Shake-chan)</h3>");
                         $cardstack_am->printShakeLink();
                     }
+					
+                    $cs_am_can_download_anything = false;
 
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
                                     CardStackAmConstants::getAmagiId())) {
                         echo ("<h3>Amagi Brilliant Park</h3>");
                         $cardstack_am->printAmagiLinks();
-                    } else if ($substatus === "invalid") {
+			$cs_am_can_download_anything = true;
+                    }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318)) {
+                        echo ("<h3>Chuunibyou demo Koi ga Shitai! Take On Me</h3>");
+                        $cardstack_am->printChuuniLink();
+						$cs_am_can_download_anything = true;
+                    }
+                    if ($substatus === "invalid" && $cs_am_can_download_anything === false) {
                         echo ("<p>Brak plików. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }
