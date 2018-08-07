@@ -86,17 +86,6 @@ if (is_active_sidebar(1)) {
 
                     echo ("<h2>Pliki do pobrania</h2>");
 					
-                    
-                    if($substatus === "expiring" || $substatus === "active") {
-                        echo ("<h3>Aruku to Iu Koto</h3>");
-                        $cardstack_am->printArukuLink();
-                    }
-                    
-                    if($substatus === "expiring" || $substatus === "active") {
-                        echo ("<h3>Łososik (Shake-chan)</h3>");
-                        $cardstack_am->printShakeLink();
-                    }
-					
                     $cs_am_can_download_anything = false;
 
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
@@ -110,6 +99,17 @@ if (is_active_sidebar(1)) {
                         $cardstack_am->printChuuniLink();
 						$cs_am_can_download_anything = true;
                     }
+					
+                    if($substatus === "expiring" || $substatus === "active") {
+                        echo ("<h3>Aruku to Iu Koto</h3>");
+                        $cardstack_am->printArukuLink();
+                    }
+                    
+                    if($substatus === "expiring" || $substatus === "active") {
+                        echo ("<h3>Łososik (Shake-chan)</h3>");
+                        $cardstack_am->printShakeLink();
+                    }
+
                     if ($substatus === "invalid" && $cs_am_can_download_anything === false) {
                         echo ("<p>Brak plików. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
