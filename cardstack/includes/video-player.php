@@ -3,7 +3,7 @@
 class CsAmVideo {
 
     function PrintFreeFilmPlayer() {
-        
+
         $csam_poster = "https://static.animagia.pl/film_poster.jpg";
         $cardstack_am_episode = "2";
         $cardstack_am_pure_stream_str = "Chuu_2_" . time() .
@@ -35,23 +35,32 @@ class CsAmVideo {
         <script src="https://static.animagia.pl/video.js"></script>
 
         <script>
-            var vid1 = videojs('amagi');
-            vid1.on('dblclick', function () {
-                vid1.requestFullscreen();
+            var player = videojs('amagi');
+            player.on('dblclick', function () {
+                player.requestFullscreen();
             });
-            vid1.on('dblclick', function () {
-                vid1.exitFullscreen();
+            player.on('dblclick', function () {
+                player.exitFullscreen();
             });
+            
+            var modal = null;
 
-            vid1.on('timeupdate', function () {
-                var vid1time = vid1.currentTime();
+            player.on('timeupdate', function () {
+                var vid1time = player.currentTime();
                 //console.log('seeked from', vid1time);
 
-                if (vid1time > 443) {
-                    vid1.reset();
+                if (vid1time > 430) {
+                    player.pause();
+                    if(modal === null || modal.opened() === false) {
+                        modal = player.createModal('This is a modal!');
+                    }
+                    modal.on('modalclose', function () {
+                        player.currentTime(425);
+                    });
                 }
 
             });
+            
         </script>
         <?php
     }
