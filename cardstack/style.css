@@ -3,14 +3,30 @@ Theme Name: Card Stack
 Description: A lightweight, script-free, standards-compliant theme inspired by Google's Material Design guidelines.
 Version: 1.0
 Author: Tomasz Lewoc
-License: GNU General Public License v2 or any later version
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GNU General Public License v3 or any later version
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 Tags: responsive-layout, one-column, custom-header, custom-menu, white, blue, sticky-post, featured-images, editor-style, threaded-comments
 
-Copyright 2015 Tomasz Lewoc
+Copyright 2018 Tomasz Lewoc
 
 Licensed under the GNU General Public License, version 2 or any later version. See http://www.gnu.org/licenses/gpl-2.0.html
 */
+
+@font-face {
+    font-family: 'Source Sans Pro Semibold';
+    src: url('https://static.animagia.pl/SourceSansPro-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Regular';
+    src: url('https://static.animagia.pl/Open Sans Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Semibold';
+    src: url('https://static.animagia.pl/Open Sans Semibold.ttf');
+}
+
 
 
 html, body, div, header, hgroup, nav, footer, article, aside, h1, h2, h3, h4, h5, h6, p, ul, ol, li,
@@ -38,15 +54,14 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Tahoma",sans-serif;
+h1, h2, h3, h4, h5, h6, p.demoted-title {
+    font-family: "Source Sans Pro Semibold";
     letter-spacing: -0.02em;
-    font-weight: normal;
+    font-weight: 400;
 }
 
 h1, p.demoted-title {
     margin-bottom: 0.45rem;
-    letter-spacing: 0.02em;
     text-align: left;
     font-size: 1.4rem;
 }
