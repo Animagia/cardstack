@@ -138,6 +138,26 @@ if (is_active_sidebar(1)) {
             </div>
         </div>
     </article>
+    <aside style="display: flex; justify-content: space-between; margin: 0 auto 40px auto; max-width: 960px; box-shadow: 0 2px 1px #ccc; background-color: white;">
+        <div style="flex-basis: 33%; text-align: center; padding: 10px 0 0 0;">
+            <i class="material-icons">
+                movie_creation
+            </i>
+            <p style="font-weight: 800;">Lorem ipsum dolor sit amet</p>
+        </div>
+        <div style="flex-basis: 33%; text-align: center; padding: 10px 0 0 0;">
+            <i class="material-icons">
+                lock
+            </i>
+            <p style="font-weight: 800;">Lorem ipsum dolor sit amet</p>
+        </div>
+        <div style="flex-basis: 33%; text-align: center; padding: 10px 0 0 0;">
+            <i class="material-icons">
+                ondemand_video
+            </i>
+            <p style="font-weight: 800;">Lorem ipsum dolor sit amet</p>
+        </div>
+    </aside>
 </main>
 
 <?php get_footer(); ?>
