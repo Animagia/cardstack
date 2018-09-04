@@ -1,3 +1,8 @@
+<?php
+require_once( __DIR__ . '/functions.php');
+?>
+
+
 <!DOCTYPE html>
 
 <html <?php language_attributes(); ?>>
@@ -15,9 +20,7 @@
 
         <?php
         /* Animagia.pl-specific hack */
-        if (is_page_template('templates/page-premium-video.php') ||
-		   is_page_template('templates/page-premium-film.php') ||
-		   is_page_template('templates/page-coupon-activated.php') ) {
+        if (CardStackAm::templateHasVideo()) {
             print '<link href="https://static.animagia.pl/video-js.css" ' .
                     ' rel="stylesheet" type="text/css" />' . PHP_EOL;
             
