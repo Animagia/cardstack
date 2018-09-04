@@ -1139,6 +1139,8 @@ address {
 
 .container {
     position: relative;
+    margin: 0;
+    overflow: hidden;
 }
 
 .image-text {
@@ -1149,4 +1151,26 @@ address {
     background-color: rgb(0, 0, 0, 0.6);
     color: white;
     padding-top: 10px;
+}
+
+.aside {
+    margin: 0 auto 40px auto;
+    max-width: 960px;
+    box-shadow: 0 2px 1px #ccc;
+    background-color: white;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.mmenuitem {
+    margin: 0;
+    flex-basis: 33%;
+    display: inline;
+    text-align: center;
+    font-weight: 800;
+    padding-top: 15px;
 }

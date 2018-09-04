@@ -55,62 +55,15 @@ if (is_active_sidebar(1)) {
 
 
                 <?php
-                $cardstack_am_episode = "00";
-                if ($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
-                    $cardstack_am_episode = $cardstack_am_episode . 'a';
-                }
-                $cardstack_am_pure_stream_str = "Chuuni_" . $cardstack_am_episode . "_" . time() .
-                    "_" . $_SERVER['REMOTE_ADDR'];
-                $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
-                if ($_GET["altsub"] === "yes") {
-                    $cardstack_am_episode = $cardstack_am_episode . 'a';
-                }
-                $cardstack_am_video = CardStackAmConstants::getVidUrl() .
-                    "stream/film_stream.php/Chuuni" . $cardstack_am_episode . ".webm?token=" .
-                    $cardstack_am_stream_token;
-                $cardstack_am_poster = "https://static.animagia.pl/film_poster.jpg";
 
-                if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
-                    $cardstack_am_video = "";
+                if (CardStackAm::userCanStreamProduct(318)) {
+                    CsAmVideo::printPremiumFilmPlayer();
+                } else {
+                    CsAmVideo::printFreeFilmPlayer();
                 }
 
-                if (CardStackAm::userCanStreamProduct(318)) :
 
-                    if ($cardstack_am_episode == "00") {
-                        echo '<p>Jeśli wolisz napisy bez japońskich tytułów grzecznościowych, przejdź <a href="'
-                            . get_home_url() . '/?altsub=yes">tutaj</a>.</p>';
-                    } else if ($cardstack_am_episode == "00a") {
-                        echo '<p>Napisy bez japońskich tytułów grzecznościowych, z zachodnią kolejnością imion i nazwisk.</p>';
-                    }
-                    ?>
-
-                    <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->
-                    <video id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
-                           controls="true" oncontextmenu="return false;"
-                           poster="<?php echo $cardstack_am_poster ?>" preload="metadata"
-                           data-setup='{}'>
-                        <source src="<?php echo $cardstack_am_video ?>" type="video/webm" />
-                    </video>
-
-                    <script src="https://static.animagia.pl/video.js"></script>
-
-                    <script>
-                        var vid1 = videojs('amagi');
-                        vid1.on('dblclick', function () {
-                            vid1.requestFullscreen();
-                        });
-                        vid1.on('dblclick', function () {
-                            vid1.exitFullscreen();
-                        });
-                    </script>
-
-                <?php
-                else :
-
-                    CsAmVideo::printFreeFilmPlayer(); ?>
-
-
-                <?php endif; ?>
+                ?>
 
                 <?php comments_template(); ?>
 
@@ -124,10 +77,8 @@ if (is_active_sidebar(1)) {
         print(' has-breadcrumbs');
     }
     ?>">
-        <div class="container">
-            <?php
-            print("<img src=".get_template_directory_uri()."/templates/Elementario.png alt=\"Amagi\"/>")
-            ?>
+        <figure class="container">
+            <img src="https://static.animagia.pl/Amagi1.jpg" alt="Amagi"/>
             <div class="image-text">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper dapibus eros.
@@ -136,27 +87,29 @@ if (is_active_sidebar(1)) {
                     metus eu tortor blandit, in viverra est ultricies.
                 </p>
             </div>
-        </div>
+        </figure>
     </article>
-    <aside style="display: flex; justify-content: space-between; margin: 0 auto 40px auto; max-width: 960px; box-shadow: 0 2px 1px #ccc; background-color: white;">
-        <div style="flex-basis: 33%; text-align: center; padding: 10px 0 0 0;">
-            <i class="material-icons">
-                movie_creation
-            </i>
-            <p style="font-weight: 800;">Lorem ipsum dolor sit amet</p>
-        </div>
-        <div style="flex-basis: 33%; text-align: center; padding: 10px 0 0 0;">
-            <i class="material-icons">
-                lock
-            </i>
-            <p style="font-weight: 800;">Lorem ipsum dolor sit amet</p>
-        </div>
-        <div style="flex-basis: 33%; text-align: center; padding: 10px 0 0 0;">
-            <i class="material-icons">
-                ondemand_video
-            </i>
-            <p style="font-weight: 800;">Lorem ipsum dolor sit amet</p>
-        </div>
+    <aside class="aside">
+        <ul class="icon-container">
+            <li class="mmenuitem">
+                <i class="material-icons">
+                    movie_creation
+                </i>
+                <p>Lorem ipsum dolor sit amet</p>
+            </li>
+            <li class="mmenuitem">
+                <i class="material-icons">
+                    lock
+                </i>
+                <p>Lorem ipsum dolor sit amet</p>
+            </li>
+            <li class="mmenuitem">
+                <i class="material-icons">
+                    ondemand_video
+                </i>
+                <p>Lorem ipsum dolor sit amet</p>
+            </li>
+        </ul>
     </aside>
 </main>
 
