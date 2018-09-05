@@ -1,11 +1,10 @@
 <?php
 /*
-  Template Name: Premium film
+  Template Name: Welcome
  */
 
 require_once( __DIR__ . '/../includes/video-player.php' );
 ?>
-
 
 <?php get_header(); ?>
 
@@ -66,18 +65,46 @@ if (is_active_sidebar(1)) {
 
                 ?>
 
-                <?php
-                echo "<p style=\"margin-top: 18px; text-align: center;\">";
-                echo 'Jeśli chcesz obejrzeć Amagi Brilliant Park, przejdź <a href="' . get_home_url() . '/amagi-brilliant-park-odc-1">tutaj</a>.';
-                echo "</p>";
-                ?>
-
-
                 <?php comments_template(); ?>
 
             <?php endwhile; ?>
         <?php endif; ?>
 
-    </article></main>
+    </article>
+
+    <article class="page<?php
+    if (get_theme_mod('page_breadcrumbs')) {
+        print(' has-breadcrumbs');
+    }
+    ?>">
+        <figure class="container">
+            <img src="https://static.animagia.pl/Amagi1.jpg" alt="Amagi"/>
+            <div class="image-text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper dapibus eros.
+                    Quisque et rutrum purus, semper rhoncus purus. Donec libero odio, eleifend a purus
+                    lobortis, accumsan cursus urna. Pellentesque et pharetra metus. Mauris lobortis
+                    metus eu tortor blandit, in viverra est ultricies.
+                </p>
+            </div>
+        </figure>
+    </article>
+    <aside class="aside">
+        <ul class="icon-container">
+            <li class="mmenuitem">
+                <img class="image" src="https://dev.animagia.pl/movie_creation.png" alt="movie"/>
+                <p>Lorem ipsum dolor sit amet</p>
+            </li>
+            <li class="mmenuitem">
+                <img class="image" src="https://dev.animagia.pl/lock.png" alt="lock"/>
+                <p>Lorem ipsum dolor sit amet</p>
+            </li>
+            <li class="mmenuitem">
+                <img class="image" src="https://dev.animagia.pl/ondemand_video.png" alt="video"/>
+                <p>Lorem ipsum dolor sit amet</p>
+            </li>
+        </ul>
+    </aside>
+</main>
 
 <?php get_footer(); ?>

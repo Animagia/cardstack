@@ -343,6 +343,16 @@ require_once( __DIR__ . '/includes/am_constants.php');
 
 class CardStackAm {
 
+    static function templateHasVideo() {
+        if (is_page_template('templates/page-premium-video.php') ||
+            is_page_template('templates/page-premium-film.php') ||
+            is_page_template('templates/page-coupon-activated.php') ||
+            is_page_template('templates/page-welcome.php')) {
+            return true;
+        }
+        return false;
+    }
+
     static function getStatus($sub) {
         return $sub->data["status"];
     }
