@@ -92,21 +92,15 @@ if (is_active_sidebar(1)) {
     <aside class="aside">
         <ul class="icon-container">
             <li class="mmenuitem">
-                <i class="material-icons">
-                    movie_creation
-                </i>
+                <img class="image" src="https://dev.animagia.pl/movie_creation.png" alt="movie"/>
                 <p>Lorem ipsum dolor sit amet</p>
             </li>
             <li class="mmenuitem">
-                <i class="material-icons">
-                    lock
-                </i>
+                <img class="image" src="https://dev.animagia.pl/lock.png" alt="lock"/>
                 <p>Lorem ipsum dolor sit amet</p>
             </li>
             <li class="mmenuitem">
-                <i class="material-icons">
-                    ondemand_video
-                </i>
+                <img class="image" src="https://dev.animagia.pl/ondemand_video.png" alt="video"/>
                 <p>Lorem ipsum dolor sit amet</p>
             </li>
         </ul>

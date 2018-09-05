@@ -8,8 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title><?php wp_title(); ?></title>
         <link href="<?php print(get_stylesheet_uri()); ?>" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
 
         <?php
         wp_head();
@@ -23,6 +21,11 @@
             
             print '<link href="https://static.animagia.pl/video-js-custom.css" ' .
                     ' rel="stylesheet" type="text/css" />';
+        }
+
+        if (is_page_template('templates/page-welcome.php')){
+            print '<link href="' . get_template_directory_uri() . '/page-welcome-style.css" ' .
+                ' rel="stylesheet" type="text/css" />';
         }
         /* end hack */
         ?>
