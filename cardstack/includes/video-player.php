@@ -47,16 +47,10 @@ class CsAmVideo {
 
             player.on('timeupdate', function () {
                 var vid1time = player.currentTime();
-                //console.log('seeked from', vid1time);
 
                 if (vid1time > 430) {
                     player.pause();
-                    if(modal === null || modal.opened() === false) {
-                        modal = player.createModal('This is a modal!');
-                    }
-                    modal.on('modalclose', function () {
-                        player.currentTime(425);
-                    });
+                    player.currentTime(425);
                 }
 
             });
