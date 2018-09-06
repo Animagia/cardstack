@@ -13,18 +13,18 @@ Licensed under the GNU General Public License, version 2 or any later version. S
 */
 
 @font-face {
-    font-family: 'Source Sans Pro Semibold';
-    src: url('https://static.animagia.pl/SourceSansPro-SemiBold.ttf');
+    font-family: 'Source Sans Pro Regular';
+    src: url('./SourceSansPro-Regular.otf');
 }
 
 @font-face {
     font-family: 'Open Sans Regular';
-    src: url('https://static.animagia.pl/Open Sans Regular.ttf');
+    src: url('./OpenSans-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Open Sans Semibold';
-    src: url('https://static.animagia.pl/Open Sans Semibold.ttf');
+    src: url('./OpenSans-SemiBold.ttf');
 }
 
 
@@ -35,6 +35,7 @@ img, table, tr, th, td, dl, dt, dd, address, pre {
 }
 
 a {
+    font-family: "Open Sans Semibold", sans-serif;
     text-decoration: inherit;
     color: #41669E;
     font-weight: bold;
@@ -42,7 +43,7 @@ a {
 }
 
 html {
-    font-family: Tahoma, sans-serif;
+    font-family: "Open Sans Regular", sans-serif;
     font-size: 15px;
     color: #333;
     overflow-x: hidden;
@@ -55,7 +56,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p.demoted-title {
-    font-family: "Source Sans Pro Semibold";
+    font-family: "Source Sans Pro Regular", sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
 }
