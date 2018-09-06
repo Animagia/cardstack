@@ -8,4 +8,4 @@ Includes code from Subscriptions for WooCommerce by WebToffee (https://plugins.t
 
 This theme contains fonts:
     Open Sans (https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans): designed by Steve Matteson, which is licensed under Apache License, Version 2.0
-    Source Sans Pro (https://www.fontsquirrel.com/fonts/source-sans-pro): designed by Paul D. Hunt, which is licensed under SIL Open Font License v1.10
+    Source Sans Pro (https://github.com/adobe-fonts): designed by Paul D. Hunt, which is licensed under SIL Open Font License v1.10
