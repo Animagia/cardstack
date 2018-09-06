@@ -223,7 +223,6 @@ article ul ul, article ul ol, article ol ul, article ol ol {
 }*/
 
 blockquote {
-    font-family: Cambria, serif;
     font-style: italic;
     padding: 0 16px;
     margin-left: 12px; margin-right: 12px;
@@ -492,7 +491,6 @@ header#header-main {
     margin: 14px auto 0;
     max-width: 932px;
     padding: 0 14px;
-    font-family: "Trebuchet MS", sans-serif;
     font-size: 1.7rem;
     line-height: 1.2;
     letter-spacing: 0.01em;
@@ -837,7 +835,6 @@ nav#language-switcher {
     width: 100%;
     top: -20px;
     color: white;
-    /* font-family: "Tahoma",sans-serif; */
     font-size: 18px;
     letter-spacing: -0.02em;
 }
@@ -1057,7 +1054,6 @@ article div.fb_iframe_widget {
     font-size: 156pt;
     text-align: center;
     line-height: 380px;
-    font-family: "Varela Round", sans-serif;
     background-color: rgba(255, 255, 255, .3);
     text-shadow: 0px 0px 15px rgb(119, 119, 119);
 }
