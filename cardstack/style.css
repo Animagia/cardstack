@@ -59,13 +59,13 @@ h1, h2, h3, h4, h5, h6, p.demoted-title {
     letter-spacing: -0.02em;
 }
 
-h1, p.demoted-title {
+h1, .demoted-title {
     margin-bottom: 0.45rem;
     text-align: left;
     font-size: 1.7rem;
 }
 
-h2 {
+h2:not(.demoted-title) {
     margin-bottom: 0.4rem;
     letter-spacing: -0.01em;
     text-align: left;
@@ -287,7 +287,7 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 }
 
 /* add a bit more breathing room to headings in pages and non-floating images */
-article.page>h1:not(:first-of-type), article.page>h2, article.page>h3, article.page>h4, article.page>h5, article.page>h6 {
+article.page>h1:not(:first-of-type), article.page>h2:not(.demoted-title), article.page>h3, article.page>h4, article.page>h5, article.page>h6 {
     margin-top: 18px;
 }
 

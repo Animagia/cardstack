@@ -44,9 +44,9 @@ if (is_active_sidebar(1)) {
                     print('</span>');
                 }
                 if (is_front_page()) {
-                    echo '<p class="demoted-title">';
+                    echo '<h2 class="demoted-title">';
                     the_title();
-                    echo '</p>';
+                    echo '</h2>';
                 } else {
                     echo '<h1>';
                     the_title();
