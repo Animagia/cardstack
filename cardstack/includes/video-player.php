@@ -20,9 +20,10 @@ class CsAmVideo {
         }
         ?>
 
-        <p>Bezpłatny stream ma ograniczony czas oglądania. Żeby obejrzeć całość,
-            załóż <a href="<?php echo get_home_url() ?>/sklep/">konto premium</a>
-            lub kup <a href="<?php echo get_home_url() ?>/sklep/">cyfrową kopię</a>.</p>
+        <p>Tegoroczny film o tych, dla których dorastanie jest zbyt mainstreamowe.
+            Streaming bezpłatny z ograniczonym czasem oglądania, całość dostępna w
+            <a href="<?php echo get_home_url() ?>/sklep/">cyfrowej kopii</a> i dla
+            <a href="<?php echo get_home_url() ?>/sklep/">kont premium</a>.</p>
 
 
         <video id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
