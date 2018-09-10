@@ -51,8 +51,12 @@ a.banner-link {
     margin: 20px 0;
     flex-basis: 33%;
     text-align: center;
-    font-weight: 800;
     list-style-type: none;
+}
+
+.mmenuitem > strong {
+    font: inherit;
+    font-family: "Open Sans Semibold", sans-serif;
 }
 
 @media(max-width: 960px) {
