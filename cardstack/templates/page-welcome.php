@@ -52,10 +52,12 @@ if (is_active_sidebar(1)) {
                     the_title();
                     echo '</h1>';
                 }
-                ?>
-
-
-                <?php
+                
+                if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+                    echo '<p><strong>Video playback works in Poland only.</strong> Please contact us '
+                    . 'if your location was detected incorrectly or if you qualify for "roaming" '
+                    . 'under EU law.</p>';
+                }
 
                 if (CardStackAm::userCanStreamProduct(318)) {
                     CsAmVideo::printPremiumFilmPlayer();
