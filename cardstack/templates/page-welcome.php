@@ -54,7 +54,7 @@ if (is_active_sidebar(1)) {
                 }
                 
                 if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
-                    echo '<p><strong>Video playback works in Poland only.</strong> Please contact us '
+                    echo '<p>Video playback works in Poland only. Please contact us '
                     . 'if your location was detected incorrectly or if you qualify for "roaming" '
                     . 'under EU law.</p>';
                 }
