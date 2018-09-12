@@ -3,3 +3,4 @@ cardstack/*/.*
 cardstack/pp_all_cards.png
 cardstack/includes/am_constants.php
 nbproject/private
+.idea

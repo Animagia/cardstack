@@ -13,18 +13,18 @@ Licensed under the GNU General Public License, version 2 or any later version. S
 */
 
 @font-face {
-    font-family: 'Source Sans Pro Regular';
-    src: url('assets/fonts/SourceSansPro-Regular.ttf');
+    font-family: "Source Sans Pro Regular";
+    src: url(assets/fonts/SourceSansPro-Regular.ttf);
 }
 
 @font-face {
-    font-family: 'Open Sans Regular';
-    src: url('assets/fonts/OpenSans-Regular.ttf');
+    font-family: "Open Sans Regular";
+    src: url(assets/fonts/OpenSans-Regular.ttf);
 }
 
 @font-face {
-    font-family: 'Open Sans Semibold';
-    src: url('assets/fonts/OpenSans-SemiBold.ttf');
+    font-family: "Open Sans Semibold";
+    src: url(assets/fonts/OpenSans-SemiBold.ttf);
 }
 
 
@@ -353,7 +353,7 @@ div.wp-caption.alignleft {
     margin: 0 12px 12px 0;
 }
 
-div.wp-caption.alignright{
+div.wp-caption.alignright {
     float: right;
     margin: 0 0 12px 12px;
 }
@@ -418,7 +418,7 @@ ol.commentlist p {
 }
 
 /* just to prevent comment body from creeping beside the photo if the user decreases font size significantly */
-ol.commentlist div.comment-meta.commentmetadata+* { 
+ol.commentlist div.comment-meta.commentmetadata+* {
     clear: both;
 }
 
@@ -428,7 +428,7 @@ ol.commentlist ol, ol.commentlist ul { /* fix for lists in comment body */
 }
 
 /* fix for nested lists in comment body */
-ol.commentlist ol ol, ol.commentlist ul ol, ol.commentlist ol ul, ol.commentlist ul ul { 
+ol.commentlist ol ol, ol.commentlist ul ol, ol.commentlist ol ul, ol.commentlist ul ul {
     margin-bottom:0;
 }
 
@@ -744,7 +744,7 @@ aside#bottom-bar { /* text nodes here are likely widget headers */
     font-size: 1.3rem;
 }
 
-aside#bottom-bar > * { 
+aside#bottom-bar > * {
     font-size: 1rem;
 }
 
@@ -870,7 +870,7 @@ nav#language-switcher a {
 }
 
 nav#language-switcher ul > li:first-child > a::after {
-    content: ' \25be';
+    content: " \25be";
 }
 
 /* Copied from dropped child theme - merge into above or put as custom css in theme customizer */
@@ -888,20 +888,21 @@ article div.fb_iframe_widget {
 /* responsiveness! */
 
 /* Animagia.pl specific */
-@media(min-width: 961px) {
-    
+@media (min-width: 961px) {
+
     nav#nav-main > a#menu-open,
     nav#nav-main > #m1:target ~ a#menu-close,
     nav#nav-main > #m1:target ~ a#menu-open {
         display: none;
     }
 }
+
 @media(max-width: 960px) {
     #site-title {
         margin: 0;
         padding: 0;
     }
-    
+
     #titular-logo {
         padding: 5px !important;
         box-sizing: border-box !important;
@@ -912,7 +913,7 @@ article div.fb_iframe_widget {
 }
 /* end Animagia.pl specific */
 
-@media(max-width: 960px) {
+@media (max-width: 960px) {
     #menu-open, #menu-close {
         display: none;
     }
@@ -983,7 +984,6 @@ article div.fb_iframe_widget {
     nav#nav-main #m1:target ~ ul > li {
         display: block;
     }
-
 }
 
 
@@ -1055,7 +1055,7 @@ article div.fb_iframe_widget {
     text-align: center;
     line-height: 380px;
     background-color: rgba(255, 255, 255, .3);
-    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+    text-shadow: 0 0 15px rgb(119, 119, 119);
 }
 
 .slide:hover + .nav label { opacity: 0.5; }
@@ -1109,8 +1109,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
     background: rgba(0, 0, 0, 0.8);
 }
 
-@media(max-width: 960px) {
-
+@media (max-width: 960px) {
     .slides, .slide, .slide img {
         height: 200px;
     }
@@ -1119,7 +1118,6 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
         width: 80px;
         line-height: 160px;
     }
-
 }
 
 /* ugly temporary hacks below */

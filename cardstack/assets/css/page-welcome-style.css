@@ -26,7 +26,7 @@ a.banner-link {
 }
 
 .image-text span.banner-cta {
-    font-family: "Open Sans Semibold";
+    font-family: "Open Sans Semibold", sans-serif;
     color: #dadaff;
 }
 
@@ -59,7 +59,7 @@ a.banner-link {
     font-family: "Open Sans Semibold", sans-serif;
 }
 
-@media(max-width: 960px) {
+@media (max-width: 960px) {
     .mmenuitem {
         margin: 20px 0 0 0;
     }
@@ -71,5 +71,4 @@ a.banner-link {
     .icon-container {
         flex-direction: column;
     }
-
 }
