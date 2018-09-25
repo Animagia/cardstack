@@ -14,17 +14,17 @@ Licensed under the GNU General Public License, version 2 or any later version. S
 
 @font-face {
     font-family: 'Source Sans Pro Regular';
-    src: url('./SourceSansPro-Regular.ttf');
+    src: url('assets/fonts/SourceSansPro-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Open Sans Regular';
-    src: url('./OpenSans-Regular.ttf');
+    src: url('assets/fonts/OpenSans-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Open Sans Semibold';
-    src: url('./OpenSans-SemiBold.ttf');
+    src: url('assets/fonts/OpenSans-SemiBold.ttf');
 }
 
 

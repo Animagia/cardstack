@@ -110,7 +110,7 @@ add_filter('the_content_more_link', 'cardstack_remove_more_jump_link');
 /* ==== Editor styles ==== */
 
 function cardstack_add_editor_styles() {
-    add_editor_style();
+    add_editor_style('assets/css/editor-style.css');
 }
 
 add_action('init', 'cardstack_add_editor_styles');
@@ -679,7 +679,7 @@ function cardstack_am_reset_pass_url() {
 add_filter('lostpassword_url', 'cardstack_am_reset_pass_url', 11, 0);
 
 function cardstack_amreplacePayPalIcon($iconUrl) {
-	return get_bloginfo('stylesheet_directory') . '/pp_all_cards.png';
+	return get_bloginfo('stylesheet_directory') . '/assets/images/pp_all_cards.png';
 }
  
 add_filter('woocommerce_paypal_icon', 'cardstack_amreplacePayPalIcon');
