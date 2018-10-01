@@ -1,24 +1,18 @@
 <?php
-/*
-  Template Name: Premium video
+/**
+ * Template Name: Premium video
  */
 ?>
 
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
-    if (get_theme_mod('page_breadcrumbs')) {
-        print(' has-breadcrumbs');
-    }
-    ?>">
+<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
 
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
+    <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
+
+        <?php if (have_posts()): ?>
+            <?php while (have_posts()): the_post(); ?>
 
                 <?php
                 /* breadcrumbs */
@@ -41,7 +35,7 @@ if (is_active_sidebar(1)) {
 
                     print('</span>');
                 }
-                if(is_front_page()) {
+                if (is_front_page()) {
                     echo '<p class="demoted-title">';
                     the_title();
                     echo '</p>';
@@ -58,7 +52,7 @@ if (is_active_sidebar(1)) {
                         "_" . $_SERVER['REMOTE_ADDR'];
                 $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
                 $cardstack_am_episode = explode(" ", get_the_title())[4];
-                if($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
+                if ($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
                     $cardstack_am_episode = $cardstack_am_episode . 'a';
                 }
                 $cardstack_am_video = CardStackAmConstants::getVidUrl() .
@@ -70,10 +64,10 @@ if (is_active_sidebar(1)) {
                 if ($cardstack_am_episode == "1") {
                     echo '<p>Jeśli wolisz napisy bez tytułów grzecznościowych, przejdź <a href="'
                     . get_home_url() . '/amagi-brilliant-park-odc-1' .  '/?altsub=yes">tutaj</a>.</p>';
-                } else if($cardstack_am_episode == "1a") {
+                } else if ($cardstack_am_episode == "1a") {
                     echo '<p>Alternatywne napisy bez tytułów grzecznościowych, z zachodnią kolejnością imion. <a href="' 
                     . get_home_url() . '/sklep">Wersja do ściągnięcia</a> ma oba warianty napisów w jednym pliku.</p>';
-                } else if(!CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) {
+                } else if (!CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) {
                     echo '<p>Polecamy <a href="' 
                     . get_home_url() . '/sklep">wersję do ściągnięcia</a>. Najwyższa jakość, po dwa warianty napisów i audio,'
 					. ' Twoja na zawsze!</p>';
@@ -91,7 +85,7 @@ if (is_active_sidebar(1)) {
 
                 if ($cardstack_am_episode == "1" || $cardstack_am_episode == "1a" || $cardstack_am_episode == "2" ||
 						$cardstack_am_episode == "3" || $cardstack_am_episode == "4" ||
-                        CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
+                        CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())):
                     ?>
 
                     <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->
@@ -118,7 +112,7 @@ if (is_active_sidebar(1)) {
                     echo "<p style=\"margin-top: 18px; text-align: center;\">";
 
 
-                    if ($cardstack_am_episode > 1) :
+                    if ($cardstack_am_episode > 1):
                         echo '<a href="' . get_home_url() . '/amagi-brilliant-park-odc-' .
                         strval(intval($cardstack_am_episode) + -1) . '/">« poprzedni odcinek</a>';
                     endif;
@@ -127,7 +121,7 @@ if (is_active_sidebar(1)) {
                         echo ' | ';
                     }
 
-                    if ($cardstack_am_episode < 12) :
+                    if ($cardstack_am_episode < 12):
                         echo '<a href="' . get_home_url() . '/amagi-brilliant-park-odc-' .
                         strval(intval($cardstack_am_episode) + 1) . '/">następny odcinek »</a>';
                     endif;
@@ -145,6 +139,7 @@ if (is_active_sidebar(1)) {
             <?php endwhile; ?>
         <?php endif; ?>
 
-    </article></main>
+    </article>
+</main>
 
 <?php get_footer(); ?>

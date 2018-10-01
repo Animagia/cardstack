@@ -1,31 +1,23 @@
 <?php
-/*
-  Template Name: Coupon activated
+/**
+ * Template Name: Coupon activated
  */
 ?>
 
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
-          if (get_theme_mod('page_breadcrumbs')) {
-              print(' has-breadcrumbs');
-          }
-          ?>">
+<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
+
+    <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
 
         <?php if (have_posts()) : ?>
             <?php while (have_posts()) : the_post(); ?>
 
                 <h1><?php the_title(); ?></h1>
-	
-                
 
                 <?php
-                if (empty($_POST["code"])) {
+                if (empty($_POST['code'])) {
 					echo "<p>Coś poszło nie tak. Kupon pozostał niewykorzystany. <a href=\"https://animagia.pl/kupon\">Powrót</a></p>";
                 } else if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
                     ?>
@@ -37,7 +29,7 @@ if (is_active_sidebar(1)) {
 
                     $cardstack_am_c_flag = true;
 
-                    $cardstack_am_wc_c = new WC_Coupon($_POST["code"]);
+                    $cardstack_am_wc_c = new WC_Coupon($_POST['code']);
 					
 					/*echo("<pre>");
 					var_dump($cardstack_am_wc_c->get_product_ids(  ));
@@ -46,8 +38,8 @@ if (is_active_sidebar(1)) {
                     $cardstack_am_show_links = false;
 
                     if ($cardstack_am_wc_c->id !== 0 && $cardstack_am_wc_c->usage_count == 0) {
-                        $cardstack_am_wc_c->set_description((new DateTime("now",
-                                new DateTimeZone("Europe/Warsaw")))->format("Y-m-d H:i:s"));
+                        $cardstack_am_wc_c->set_description((new DateTime('now',
+                                new DateTimeZone('Europe/Warsaw')))->format('Y-m-d H:i:s'));
                         $cardstack_am_wc_c->set_usage_count(1);
                         $cardstack_am_wc_c->save();
 
@@ -65,7 +57,7 @@ if (is_active_sidebar(1)) {
 
                     if ($cardstack_am_show_links) {
 						
-						if($cardstack_am_wc_c->get_product_ids()[0] === 39) { // XXX
+						if ($cardstack_am_wc_c->get_product_ids()[0] === 39) { // XXX
 
 							$cardstack_am->printAmagiLinks();
 
@@ -76,7 +68,7 @@ if (is_active_sidebar(1)) {
 							' i wpisz kod z kuponu ponownie, by wygenerować nowe.</p>' .
 							'<p>Raz ściągnięte pliki możesz zachować na zawsze.</p>';
 							
-						} else if($cardstack_am_wc_c->get_product_ids()[0] === 318) { // XXX
+						} else if ($cardstack_am_wc_c->get_product_ids()[0] === 318) { // XXX
 
 
 							$cardstack_am->printChuuniLink();
@@ -102,11 +94,10 @@ if (is_active_sidebar(1)) {
                 }
                 ?>
 
-
             <?php endwhile; ?>
         <?php endif; ?>
 
-    </article></main>
+    </article>
+</main>
 
 <?php get_footer(); ?>
-	

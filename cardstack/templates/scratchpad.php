@@ -1,29 +1,23 @@
 <?php
-/*
-  Template Name: Scratchpad
+/**
+ * Template Name: Scratchpad
  */
 ?>
 
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
-          if (get_theme_mod('page_breadcrumbs')) {
-              print(' has-breadcrumbs');
-          }
-          ?>">
+<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
 
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
+    <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
+
+        <?php if (have_posts()): ?>
+            <?php while (have_posts()): the_post(); ?>
 
                 <h1><?php the_title(); ?></h1>
 
                 <?php
-                if (!is_user_logged_in()) :
+                if (!is_user_logged_in()):
 
                     wp_login_form();
 
@@ -51,9 +45,10 @@ if (is_active_sidebar(1)) {
                 <?php comments_template(); ?>
 
             <?php endwhile; ?>
-<?php endif; ?>
+        <?php endif; ?>
 
-    </article></main>
+    </article>
+</main>
 
 <?php get_footer(); ?>
 	

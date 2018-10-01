@@ -1,7 +1,7 @@
 <?php
-/*
-Template Name: No menu, no sidebar, no title
-*/
+/**
+ * Template Name: No menu, no sidebar, no title
+ */
 ?>
 
 <!DOCTYPE html>
@@ -22,19 +22,18 @@ Template Name: No menu, no sidebar, no title
 
 <body <?php body_class(); ?>>
 
-
 	<header id="header-main" 
 		<?php
 			$hashi_headerImageUrl = get_header_image();
-			if(!empty($hashi_headerImageUrl)) {
+			if (!empty($hashi_headerImageUrl)) {
 				print('style="background-image: url('. $hashi_headerImageUrl .');"');
 			}
 		?>
 		>
 		<?php
 			$hashi_headerTextColor = get_header_textcolor();
-			if($hashi_headerTextColor != 'blank') :
-			if(is_singular()) :
+			if ($hashi_headerTextColor != 'blank'):
+			if (is_singular()):
 		?>
 			<p id="blog-title" style="color: #<?php print($hashi_headerTextColor); ?>;"><?php bloginfo('name'); ?></p>
 			<p id="blog-tagline" style="color: #<?php print($hashi_headerTextColor); ?>;"><?php bloginfo( 'description' ); ?></p>
@@ -45,18 +44,18 @@ Template Name: No menu, no sidebar, no title
 		<a id="home-link" href="<?php print(esc_url(home_url())); ?>"></a>
 	</header>
 	
-	<main class="only-column"><article>
-	
-		<?php if(have_posts()) : ?>
-		<?php while(have_posts()) : the_post(); ?>
-	
-			<?php the_content(); ?> 
-			
-			<?php comments_template(); ?>
-		
-		<?php endwhile; ?>
-		<?php endif; ?>
-		
-	</article></main>
-	
-	<?php get_footer(); ?>
+	<main class="only-column">
+        <article>
+            <?php if (have_posts()): ?>
+            <?php while (have_posts()): the_post(); ?>
+
+                <?php the_content(); ?>
+
+                <?php comments_template(); ?>
+
+            <?php endwhile; ?>
+            <?php endif; ?>
+	    </article>
+    </main>
+
+    <?php get_footer(); ?>
