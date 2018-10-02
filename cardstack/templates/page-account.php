@@ -1,29 +1,23 @@
 <?php
-/*
-  Template Name: Account management
+/**
+ * Template Name: Account management
  */
 ?>
 
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
-          if (get_theme_mod('page_breadcrumbs')) {
-              print(' has-breadcrumbs');
-          }
-          ?>">
+<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
 
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
+    <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
+
+        <?php if (have_posts()): ?>
+            <?php while (have_posts()): the_post(); ?>
 
                 <h1><?php the_title(); ?></h1>
 
                 <?php
-                if (!is_user_logged_in()) :
+                if (!is_user_logged_in()):
 
                     wp_login_form();
 
@@ -42,7 +36,6 @@ if (is_active_sidebar(1)) {
                     </p>
 
                     <h2>Konto premium</h2>
-
 
                     <?php
                     $substatus = $cardstack_am->getSubStatus();
@@ -79,7 +72,7 @@ if (is_active_sidebar(1)) {
 						– <a href=\"https://animagia.pl/chuunibyou-take-on-me/\">zacznij oglądać</a></p>");
 						$cardstack_am_can_watch_anything = true;
                     }
-					if(!$cardstack_am_can_watch_anything) {
+					if (!$cardstack_am_can_watch_anything) {
                         echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }
@@ -115,7 +108,6 @@ if (is_active_sidebar(1)) {
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }
 
-
                     // the_content();
                     ?>
 
@@ -123,10 +115,10 @@ if (is_active_sidebar(1)) {
 
                 <?php comments_template(); ?>
 
-    <?php endwhile; ?>
-<?php endif; ?>
+            <?php endwhile; ?>
+        <?php endif; ?>
 
-    </article></main>
+    </article>
+</main>
 
 <?php get_footer(); ?>
-	

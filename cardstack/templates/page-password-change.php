@@ -1,24 +1,18 @@
 <?php
-/*
-  Template Name: Password change
+/**
+ * Template Name: Password change
  */
 ?>
 
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
-    if (get_theme_mod('page_breadcrumbs')) {
-        print(' has-breadcrumbs');
-    }
-    ?>">
+<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
 
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
+    <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
+
+        <?php if (have_posts()): ?>
+            <?php while (have_posts()): the_post(); ?>
 
                 <h1><?php the_title(); ?></h1>
 
@@ -60,7 +54,7 @@ if (is_active_sidebar(1)) {
                     }
                 }
 
-                if (!$cs_am_pw_changed) :
+                if (!$cs_am_pw_changed):
                     ?>
 
                     <form method='post' action='<?php echo get_home_url() ?>/chpasswd'>
@@ -91,7 +85,7 @@ if (is_active_sidebar(1)) {
             <?php endwhile; ?>
         <?php endif; ?>
 
-    </article></main>
+    </article>
+</main>
 
 <?php get_footer(); ?>
-	

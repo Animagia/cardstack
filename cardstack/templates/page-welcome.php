@@ -1,6 +1,6 @@
 <?php
-/*
-  Template Name: Welcome
+/**
+ *Template Name: Welcome
  */
 
 require_once( __DIR__ . '/../includes/video-player.php' );
@@ -9,18 +9,12 @@ require_once( __DIR__ . '/../sample-content/page-welcome-content.php');
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
-    if (get_theme_mod('page_breadcrumbs')) {
-        print(' has-breadcrumbs');
-    }
-    ?>">
+<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
 
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
+    <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
+
+        <?php if (have_posts()): ?>
+            <?php while (have_posts()): the_post(); ?>
 
                 <?php
                 /* breadcrumbs */
@@ -77,7 +71,7 @@ if (is_active_sidebar(1)) {
 
     <?php
     $thecontent = get_the_content();
-    if(!empty($thecontent)) {
+    if (!empty($thecontent)) {
 
         the_content();
 
