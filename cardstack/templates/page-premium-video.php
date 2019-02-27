@@ -75,8 +75,7 @@ if (is_active_sidebar(1)) {
                     . get_home_url() . '/sklep">Wersja do ściągnięcia</a> ma oba warianty napisów w jednym pliku.</p>';
                 } else if(!CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) {
                     echo '<p>Polecamy <a href="' 
-                    . get_home_url() . '/sklep">wersję do ściągnięcia</a>. Najwyższa jakość, po dwa warianty napisów i audio,'
-					. ' Twoja na zawsze!</p>';
+                    . get_home_url() . '/sklep">wersję do ściągnięcia</a>, która zawiera starannie przygotowane wideo, po dwie ścieżki napisów i audio, i nadaje się do oglądania w dowolnym odtwarzaczu.</p>';
                 }
 
 
@@ -89,9 +88,7 @@ if (is_active_sidebar(1)) {
                     <?php*/
                 }
 
-                if ($cardstack_am_episode == "1" || $cardstack_am_episode == "1a" || $cardstack_am_episode == "2" ||
-						$cardstack_am_episode == "3" || $cardstack_am_episode == "4" ||
-                        CardStackAm::userCanStreamProduct(CardStackAmConstants::getAmagiId())) :
+                if (true) :
                     ?>
 
                     <!--data-setup='{"playbackRates": [1, 1.1, 1.2, 2] }'-->
@@ -123,11 +120,11 @@ if (is_active_sidebar(1)) {
                         strval(intval($cardstack_am_episode) + -1) . '/">« poprzedni odcinek</a>';
                     endif;
 
-                    if ($cardstack_am_episode > 1 && $cardstack_am_episode < 12) {
+                    if ($cardstack_am_episode > 1 && $cardstack_am_episode < 13) {
                         echo ' | ';
                     }
 
-                    if ($cardstack_am_episode < 12) :
+                    if ($cardstack_am_episode < 13) :
                         echo '<a href="' . get_home_url() . '/amagi-brilliant-park-odc-' .
                         strval(intval($cardstack_am_episode) + 1) . '/">następny odcinek »</a>';
                     endif;

@@ -1,6 +1,6 @@
 cardstack/.*
 cardstack/*/.*
 cardstack/pp_all_cards.png
-cardstack/includes/am_constants.php
+cardstack/fbbtn_plain.svg
 nbproject/private
 .idea

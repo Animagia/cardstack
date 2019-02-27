@@ -24,7 +24,7 @@
         }
 
         if (is_page_template('templates/page-welcome.php')){
-            print '<link href="' . get_template_directory_uri() . '/assets/css/page-welcome-style.css" ' .
+            print '<link href="' . get_template_directory_uri() . '/page-welcome-style.css" ' .
                 ' rel="stylesheet" type="text/css" />';
         }
         /* end hack */
@@ -50,8 +50,8 @@
             $cardstack_headerImageUrl = get_header_image();
             if (!empty($cardstack_headerImageUrl)) {
                 $cardstack_headerImageAlt = get_bloginfo('name') . " – " . get_bloginfo('description');
-                print('<a href="' . esc_url(home_url()) . '"><img id="titular-logo" src="' . $cardstack_headerImageUrl . '" alt="' .
-                        $cardstack_headerImageAlt  . '" /></a>');
+                print('<img id="titular-logo" src="' . $cardstack_headerImageUrl . '" alt="' .
+                        $cardstack_headerImageAlt  . '" />');
             }
 			
 			$cardstack_headerTextColor = get_header_textcolor();
@@ -111,7 +111,7 @@ if (has_nav_menu('cardstack_nav_menu')) :
     wp_nav_menu($cardstack_menuArgs);
     
     ?>
-	<li><a style="background-image: url(<?php print get_template_directory_uri() . '/assets/images/fbbtn_plain.svg'?>);
+	<li><a style="background-image: url(<?php print get_template_directory_uri() . '/fbbtn_plain.svg'?>);
 	background-size: contain; background-repeat: no-repeat; background-position: right;
 	box-sizing: border-box; padding-right: 40px; color: #4267b2;"
 	id="home-link" href="https://facebook.com/WydawnictwoAnimagia">Polub nas</a></li></ul>
@@ -129,7 +129,7 @@ if (has_nav_menu('cardstack_nav_menu')) :
                                 print($cardstack_customHomeLinkName);
                             } else {
                                 //print(__('Home'));
-                                print( '<img src="' . get_template_directory_uri() . '/assets/images/home.png" />' );
+                                print( '<img src="' . get_template_directory_uri() . '/home.png" />' );
                             }
                             ?></a></li>
                                     <?php

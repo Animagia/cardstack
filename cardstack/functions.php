@@ -110,7 +110,7 @@ add_filter('the_content_more_link', 'cardstack_remove_more_jump_link');
 /* ==== Editor styles ==== */
 
 function cardstack_add_editor_styles() {
-    add_editor_style('assets/css/editor-style.css');
+    add_editor_style();
 }
 
 add_action('init', 'cardstack_add_editor_styles');
@@ -338,7 +338,7 @@ function cardstack_sanitize_custom_css($custom_styles) {
 /* ==== Animagia.pl-specific stuff ==== */
 
 
-require_once( __DIR__ . '/includes/am_constants.php');
+require_once( '/home/users/animagia/includes/am_constants.php');
 
 
 class CardStackAm {
@@ -503,7 +503,7 @@ class CardStackAm {
         self::printIpNotice();
 
         echo("<p>");
-        foreach (["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "NCOP", "NCED"] as
+        foreach (["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "NCOP", "NCED"] as
                     $cardstack_am_link_iter) {
             $pure_string = "Amagi_" . $cardstack_am_link_iter . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
             $key = CardStackAmConstants::getKey();
@@ -548,6 +548,29 @@ class CardStackAm {
         echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
         "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
         echo("[Animagia.pl] Chuunibyou…Take On Me 1920×1036.mkv");
+        echo("</a>");
+
+        echo("</p>");
+    }
+	
+	
+    static function printHanaIroLink() {
+		echo('<p><strong>Uwaga:</strong> Plik wideo z filmem jest przeznaczony tylko do Twojego <strong>osobistego użytku</strong> ' .
+		'i nie może być udostępniany innym osobom, chyba że przepisy prawa stanowią inaczej.</p>');
+		
+        echo("<p>");
+
+        $pure_string = "HanaIro_" . "00" . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
+        $key = CardStackAmConstants::getKey();
+
+        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                        MCRYPT_MODE_ECB, $iv));
+
+        echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
+        "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
+        echo("[Animagia.pl] Hanasaku Iroha HSH 1080p.mkv");
         echo("</a>");
 
         echo("</p>");
@@ -679,7 +702,7 @@ function cardstack_am_reset_pass_url() {
 add_filter('lostpassword_url', 'cardstack_am_reset_pass_url', 11, 0);
 
 function cardstack_amreplacePayPalIcon($iconUrl) {
-	return get_bloginfo('stylesheet_directory') . '/assets/images/pp_all_cards.png';
+	return get_bloginfo('stylesheet_directory') . '/pp_all_cards.png';
 }
  
 add_filter('woocommerce_paypal_icon', 'cardstack_amreplacePayPalIcon');

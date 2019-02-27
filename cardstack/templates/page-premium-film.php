@@ -52,24 +52,22 @@ if (is_active_sidebar(1)) {
                     the_title();
                     echo '</h1>';
                 }
-                ?>
-
-
-                <?php
+                
+                if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+                    echo '<p>Video playback works in Poland only. Please contact us '
+                    . 'if your location was detected incorrectly or if you qualify for "roaming" '
+                    . 'under EU law.</p>';
+                }
+				
+				echo '<p>Najnowszy film o tych, dla których dorastanie jest zbyt mainstreamowe.</p>';
 
                 if (CardStackAm::userCanStreamProduct(318)) {
-                    CsAmVideo::printPremiumFilmPlayer();
+                    CsAmVideo::printPremiumFilmPlayer("Chuuni");
                 } else {
-                    CsAmVideo::printFreeFilmPlayer();
+                    CsAmVideo::printFreeFilmPlayer("Chuu");
                 }
 
 
-                ?>
-
-                <?php
-                echo "<p style=\"margin-top: 18px; text-align: center;\">";
-                echo 'Jeśli chcesz obejrzeć Amagi Brilliant Park, przejdź <a href="' . get_home_url() . '/amagi-brilliant-park-odc-1">tutaj</a>.';
-                echo "</p>";
                 ?>
 
 

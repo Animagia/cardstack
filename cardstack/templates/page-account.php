@@ -55,7 +55,7 @@ if (is_active_sidebar(1)) {
                     } else if ($substatus === "active") { //active
                         echo ("<p><strong>Aktywne.</strong> " .
                         "<a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">Zacznij oglądać anime!</a></p>" .
-                        "<p><small>Jeśli chcesz zrezygnować, <a href=\"https://www.sandbox.paypal.com/myaccount/autopay\">" .
+                        "<p><small>Jeśli chcesz zrezygnować, <a href=\"https://www.paypal.com/myaccount/autopay\">" .
                         "anuluj cykliczną płatność</a> w PayPal.</small></p>");
                     } else {
                         echo ("<p>Nieaktywne.</p>");
@@ -69,14 +69,17 @@ if (is_active_sidebar(1)) {
 	
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
                                     CardStackAmConstants::getAmagiId())) {
-                        echo ("<p>Amagi Brilliant Park – <a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">zacznij oglądać</a></p>");
+                        echo ("<p>Amagi Brilliant Park – <a href=\"https://animagia.pl/\">zacznij oglądać</a></p>");
 						$cardstack_am_can_watch_anything = true;
                     }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318) ||
-					   				$current_user->user_email === "tomasz.lewoc@protonmail.com"
-					   ) {
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318)) {
                         echo ("<p>Chuunibyou demo Koi ga Shitai! Take On Me
-						– <a href=\"https://animagia.pl/chuunibyou-take-on-me/\">zacznij oglądać</a></p>");
+						– <a href=\"https://animagia.pl/chuunibyou-demo-koi-ga-shitai-take-on-me/\">zacznij oglądać</a></p>");
+						$cardstack_am_can_watch_anything = true;
+                    }
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 508)) {
+                        echo ("<p>Hanasaku Iroha: Home Sweet Home
+						– <a href=\"https://animagia.pl/\">zacznij oglądać</a></p>");
 						$cardstack_am_can_watch_anything = true;
                     }
 					if(!$cardstack_am_can_watch_anything) {
@@ -97,6 +100,11 @@ if (is_active_sidebar(1)) {
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318)) {
                         echo ("<h3>Chuunibyou demo Koi ga Shitai! Take On Me</h3>");
                         $cardstack_am->printChuuniLink();
+						$cs_am_can_download_anything = true;
+                    }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 508)) {
+                        echo ("<h3>Hanasaku Iroha: Home Sweet Home</h3>");
+                        $cardstack_am->printHanaIroLink();
 						$cs_am_can_download_anything = true;
                     }
 					

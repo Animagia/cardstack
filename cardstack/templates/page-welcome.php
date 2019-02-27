@@ -58,11 +58,13 @@ if (is_active_sidebar(1)) {
                     . 'if your location was detected incorrectly or if you qualify for "roaming" '
                     . 'under EU law.</p>';
                 }
+				
+				echo '<p>Film kinowy studia P.A. Works, opowiadający oryginalną historię.</p>';
 
-                if (CardStackAm::userCanStreamProduct(318)) {
-                    CsAmVideo::printPremiumFilmPlayer();
+                if (CardStackAm::userCanStreamProduct(508)) { //318 = ch, 508 = h
+                    CsAmVideo::printPremiumFilmPlayer("HanaIro");
                 } else {
-                    CsAmVideo::printFreeFilmPlayer();
+                    CsAmVideo::printFreeFilmPlayer("Hana");
                 }
 
 
