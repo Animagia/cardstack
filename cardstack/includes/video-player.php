@@ -18,6 +18,11 @@ class CsAmVideo {
         if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
             $cardstack_am_video = "";
         }
+		
+		$csam_preview_length = 430;
+		if("Hana" == $csam_short_name) {
+			$csam_preview_length = 913;
+		}
         ?>
 
         <p>Streaming bezpłatny z ograniczonym czasem oglądania, całość dostępna w
@@ -48,9 +53,9 @@ class CsAmVideo {
             player.on('timeupdate', function () {
                 var vid1time = player.currentTime();
 
-                if (vid1time > 430) {
+                if (vid1time > <?php print($csam_preview_length); ?>) {
                     player.pause();
-                    player.currentTime(425);
+                    player.currentTime(<?php print(($csam_preview_length-5)); ?>);
                 }
 
             });
