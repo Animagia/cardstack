@@ -72,6 +72,10 @@ add_action('wp_head', 'cardstack_customize_css');
 /* ==== Filters ==== */
 
 function cardstack_wp_title($title) {
+    $csam_custom_title =  get_post_meta(get_the_id(), "csam_custom_title", true);
+    if($csam_custom_title) {
+        return $csam_custom_title;
+    }
     if (empty($title)) {
         return get_bloginfo('name');
     } else {
