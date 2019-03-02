@@ -7,6 +7,15 @@
               content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title><?php wp_title(); ?></title>
+        
+        <?php 
+        $csam_description =  get_post_meta(get_the_id(), "csam_description", true);
+        if($csam_description) : ?>
+        
+        <meta name="description" content="<?php print($csam_description); ?>"/>
+        
+        <?php endif; ?>
+        
         <link href="<?php print(get_stylesheet_uri()); ?>" rel="stylesheet" type="text/css" />
 
         <?php
