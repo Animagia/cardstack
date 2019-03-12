@@ -18,12 +18,15 @@ class CsAmVideo {
         if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
             $cardstack_am_video = "";
         }
-		
-		$csam_preview_length = 430;
-		if("Hana" == $csam_short_name) {
-			$csam_preview_length = 913;
-		}
-        ?>
+
+        $csam_preview_length = 430;
+        if ("Hana" == $csam_short_name) {
+            $csam_preview_length = 913;
+        } else if ("KnKPast" == $csam_short_name) {
+            $csam_preview_length = 772;
+        }
+
+?>
 
         <p>Streaming bezpłatny z ograniczonym czasem oglądania, całość dostępna w
             <a href="<?php echo get_home_url() ?>/sklep/">cyfrowej kopii</a> i dla

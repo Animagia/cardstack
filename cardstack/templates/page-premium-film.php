@@ -59,12 +59,22 @@ if (is_active_sidebar(1)) {
                     . 'under EU law.</p>';
                 }
 				
-				echo '<p>Najnowszy film o tych, dla których dorastanie jest zbyt mainstreamowe.</p>';
+		
 
-                if (CardStackAm::userCanStreamProduct(318)) {
-                    CsAmVideo::printPremiumFilmPlayer("Chuuni");
+                if(strpos(get_the_content(), 'knk') !== false ) {
+                    echo '<p>Początek historii Mirai i Akihito.</p>';
+                    if (CardStackAm::userCanStreamProduct(572)) {
+                        CsAmVideo::printPremiumFilmPlayer("KnKPast");
+                    } else {
+                        CsAmVideo::printFreeFilmPlayer("Past");
+                    }
                 } else {
-                    CsAmVideo::printFreeFilmPlayer("Chuu");
+                    echo '<p>Najnowszy film o tych, dla których dorastanie jest zbyt mainstreamowe.</p>';
+                    if (CardStackAm::userCanStreamProduct(318)) {
+                        CsAmVideo::printPremiumFilmPlayer("Chuuni");
+                    } else {
+                        CsAmVideo::printFreeFilmPlayer("Chuu");
+                    }
                 }
 
 
