@@ -22,7 +22,7 @@ class CsAmVideo {
         $csam_preview_length = 430;
         if ("Hana" == $csam_short_name) {
             $csam_preview_length = 913;
-        } else if ("KnKPast" == $csam_short_name) {
+        } else if ("Past" == $csam_short_name) {
             $csam_preview_length = 772;
         }
 
