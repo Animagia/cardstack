@@ -580,6 +580,29 @@ class CardStackAm {
         echo("</p>");
     }
 	
+	
+    static function printPastLink() {
+		echo('<p><strong>Uwaga:</strong> Plik wideo z filmem jest przeznaczony tylko do Twojego <strong>osobistego użytku</strong> ' .
+		'i nie może być udostępniany innym osobom, chyba że przepisy prawa stanowią inaczej.</p>');
+		
+        echo("<p>");
+
+        $pure_string = "KnKPast_" . "00" . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
+        $key = CardStackAmConstants::getKey();
+
+        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                        MCRYPT_MODE_ECB, $iv));
+
+        echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
+        "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
+        echo("[Animagia.pl] Kyoukai no Kanata – przeszłość.mkv");
+        echo("</a>");
+
+        echo("</p>");
+    }
+	
 
     static function printIpNotice() {
         echo("<p>");

@@ -107,6 +107,11 @@ if (is_active_sidebar(1)) {
                         $cardstack_am->printHanaIroLink();
 						$cs_am_can_download_anything = true;
                     }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 572)) {
+                        echo ("<h3>Hanasaku Iroha: Home Sweet Home</h3>");
+                        $cardstack_am->printHanaIroLink();
+						$cs_am_can_download_anything = true;
+                    }
 					
                     if($substatus === "expiring" || $substatus === "active") {
                         echo ("<h3>Aruku to Iu Koto</h3>");
