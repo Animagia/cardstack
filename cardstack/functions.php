@@ -536,6 +536,16 @@ class CardStackAm {
 	
 	
     static function printChuuniLink() {
+        
+        if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+            ?>
+                                                    <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
+                                                        jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
+                                                        w innym kraju UE.</p>
+            <?php
+            return;
+        }
+        
 		echo('<p><strong>Uwaga:</strong> Plik wideo z filmem jest przeznaczony tylko do Twojego <strong>osobistego użytku</strong> ' .
 		'i nie może być udostępniany innym osobom, chyba że przepisy prawa stanowią inaczej.</p>');
 		
@@ -559,6 +569,17 @@ class CardStackAm {
 	
 	
     static function printHanaIroLink() {
+        
+        
+        if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+            ?>
+                                                    <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
+                                                        jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
+                                                        w innym kraju UE.</p>
+            <?php
+            return;
+        }
+        
 		echo('<p><strong>Uwaga:</strong> Plik wideo z filmem jest przeznaczony tylko do Twojego <strong>osobistego użytku</strong> ' .
 		'i nie może być udostępniany innym osobom, chyba że przepisy prawa stanowią inaczej.</p>');
 		
@@ -582,6 +603,17 @@ class CardStackAm {
 	
 	
     static function printPastLink() {
+        
+        
+        if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+            ?>
+                                                    <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
+                                                        jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
+                                                        w innym kraju UE.</p>
+            <?php
+            return;
+        }
+        
 		echo('<p><strong>Uwaga:</strong> Plik wideo z filmem jest przeznaczony tylko do Twojego <strong>osobistego użytku</strong> ' .
 		'i nie może być udostępniany innym osobom, chyba że przepisy prawa stanowią inaczej.</p>');
 		
