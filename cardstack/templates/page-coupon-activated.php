@@ -88,6 +88,17 @@ if (is_active_sidebar(1)) {
 							' i wpisz kod z kuponu ponownie, by wygenerować nowy.</p>' .
 							'<p>Raz ściągnięty plik możesz zachować na zawsze.</p>';
 
+						} if($cardstack_am_wc_c->get_product_ids()[0] === 508) { // XXX
+
+							$cardstack_am->printHanaIroLink();
+
+							echo '<p>Kupon został aktywowany: ' . $cardstack_am_wc_c->get_description() .
+							', i przez 15 dni od tamtej chwili możesz go użyć do generowania linków. ' .
+							'Wygenerowane linki są krótkotrwałe – w razie potrzeby ' .
+							'wróć na <a href="https://animagia.pl/kupon">poprzednią stronę</a> ' .
+							' i wpisz kod z kuponu ponownie, by wygenerować nowe.</p>' .
+							'<p>Raz ściągnięte pliki możesz zachować na zawsze.</p>';
+							
 						} else {
 							echo "<p>Coś poszło nie tak. Kupon pozostał niewykorzystany. <a href=\"https://animagia.pl/kupon\">Powrót</a></p>";
 						}
