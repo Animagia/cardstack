@@ -87,6 +87,11 @@ if (is_active_sidebar(1)) {
 						– <a href=\"https://animagia.pl/kyoukai-no-kanata-ill-be-here-przeszlosc/\">zacznij oglądać</a></p>");
 						$cardstack_am_can_watch_anything = true;
                     }
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 615)) {
+                        echo ("<p>Kyoukai no Kanata: I’ll Be Here – przyszłość
+						– <a href=\"https://animagia.pl/kyoukai-no-kanata-ill-be-here-przyszlosc/\">zacznij oglądać</a></p>");
+						$cardstack_am_can_watch_anything = true;
+                    }
 					if(!$cardstack_am_can_watch_anything) {
                         echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
@@ -115,6 +120,11 @@ if (is_active_sidebar(1)) {
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 572)) {
                         echo ("<h3>Kyoukai no Kanata – przeszłość</h3>");
                         $cardstack_am->printPastLink();
+						$cs_am_can_download_anything = true;
+                    }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 615)) {
+                        echo ("<h3>Kyoukai no Kanata – przyszłość</h3>");
+                        $cardstack_am->printFutureLink();
 						$cs_am_can_download_anything = true;
                     }
 					
