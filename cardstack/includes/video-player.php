@@ -24,6 +24,8 @@ class CsAmVideo {
             $csam_preview_length = 913;
         } else if ("Past" == $csam_short_name) {
             $csam_preview_length = 772;
+        } else if ("Future" == $csam_short_name) {
+            $csam_preview_length = 768;
         }
 
 ?>

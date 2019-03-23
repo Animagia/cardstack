@@ -60,8 +60,14 @@ if (is_active_sidebar(1)) {
                 }
 				
 		
-
-                if(strpos(get_the_content(), 'knk') !== false ) {
+                if(strpos(get_the_content(), 'future') !== false ) {
+                    echo '<p>Satysfakcjonujące zakończenie historii Mirai, Akihito i rodziny Nase.</p>';
+                    if (CardStackAm::userCanStreamProduct(615)) {
+                        CsAmVideo::printPremiumFilmPlayer("KnKFuture");
+                    } else {
+                        CsAmVideo::printFreeFilmPlayer("Future");
+                    }
+                } else if(strpos(get_the_content(), 'knk') !== false ) {
                     echo '<p>Początek historii Mirai i Akihito.</p>';
                     if (CardStackAm::userCanStreamProduct(572)) {
                         CsAmVideo::printPremiumFilmPlayer("KnKPast");
