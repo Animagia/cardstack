@@ -30,12 +30,12 @@ class CsAmVideo {
 
 ?>
 
-        <p>Streaming bezpłatny z ograniczonym czasem oglądania, całość dostępna w
+        <p>Streaming bezpĹ‚atny z ograniczonym czasem oglÄ…dania, caĹ‚oĹ›Ä‡ dostÄ™pna w
             <a href="<?php echo get_home_url() ?>/sklep/">cyfrowej kopii</a> i dla
             <a href="<?php echo get_home_url() ?>/sklep/">kont premium</a>.</p>
 
 
-        <video id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
+        <video onerror="loadError();" id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
                controls="true" oncontextmenu="return false;"
                poster="<?php echo $csam_poster ?>" preload="metadata"
                data-setup='{}'>
@@ -46,6 +46,19 @@ class CsAmVideo {
 
         <script>
             var player = videojs('amagi');
+            var isPlaying = false;
+	    function loadError() {
+            console.warn("Playback has not started - expired token?");
+            }
+            player.on('waiting', function() {
+            isPlaying = false;
+	    setTimeout(function(){ loadError(); }, 4000);
+            });
+
+            player.on('playing', function() {
+            isPlaying = true;
+            });
+
             player.on('dblclick', function () {
                 player.requestFullscreen();
             });
@@ -62,8 +75,10 @@ class CsAmVideo {
                     player.pause();
                     player.currentTime(<?php print(($csam_preview_length-5)); ?>);
                 }
+        
 
             });
+		
             
         </script>
         <?php
@@ -90,10 +105,10 @@ class CsAmVideo {
         }
 
         if ($cardstack_am_episode == "00") {
-            echo '<p>Jeśli wolisz napisy bez japońskich tytułów grzecznościowych, przejdź <a href="'
+            echo '<p>JeĹ›li wolisz napisy bez japoĹ„skich tytuĹ‚Ăłw grzecznoĹ›ciowych, przejdĹş <a href="'
                 . get_permalink() . '?altsub=yes">tutaj</a>.</p>';
         } else if ($cardstack_am_episode == "00a") {
-            echo '<p>Napisy bez japońskich tytułów grzecznościowych, z zachodnią kolejnością imion i nazwisk.</p>';
+            echo '<p>Napisy bez japoĹ„skich tytuĹ‚Ăłw grzecznoĹ›ciowych, z zachodniÄ… kolejnoĹ›ciÄ… imion i nazwisk.</p>';
         }
         ?>
 
