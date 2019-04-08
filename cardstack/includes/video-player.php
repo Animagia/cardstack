@@ -35,7 +35,7 @@ class CsAmVideo {
             <a href="<?php echo get_home_url() ?>/sklep/">kont premium</a>.</p>
 
 
-        <video id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
+        <video onerror="loadError();" id='amagi' class="video-js vjs-16-9 vjs-big-play-centered" style="width: 100%;"
                controls="true" oncontextmenu="return false;"
                poster="<?php echo $csam_poster ?>" preload="metadata"
                data-setup='{}'>
@@ -46,6 +46,19 @@ class CsAmVideo {
 
         <script>
             var player = videojs('amagi');
+            var isPlaying = false;
+	    function loadError() {
+            console.warn("Playback has not started - expired token?");
+            }
+            player.on('waiting', function() {
+            isPlaying = false;
+	    setTimeout(function(){ loadError(); }, 4000);
+            });
+
+            player.on('playing', function() {
+            isPlaying = true;
+            });
+
             player.on('dblclick', function () {
                 player.requestFullscreen();
             });
@@ -62,8 +75,10 @@ class CsAmVideo {
                     player.pause();
                     player.currentTime(<?php print(($csam_preview_length-5)); ?>);
                 }
+        
 
             });
+		
             
         </script>
         <?php
