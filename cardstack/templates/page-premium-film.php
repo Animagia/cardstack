@@ -74,6 +74,13 @@ if (is_active_sidebar(1)) {
                     } else {
                         CsAmVideo::printFreeFilmPlayer("Past");
                     }
+                } else if(strpos(get_the_content(), 'tamako') !== false ) {
+                    echo '<p>Czy to miłość? Tak.</p>';
+                    if (CardStackAm::userCanStreamProduct(9999)) {
+                        CsAmVideo::printPremiumFilmPlayer("Tamako");
+                    } else {
+                        CsAmVideo::printFreeFilmPlayer("Tama");
+                    }
                 } else {
                     echo '<p>Najnowszy film o tych, dla których dorastanie jest zbyt mainstreamowe.</p>';
                     if (CardStackAm::userCanStreamProduct(318)) {

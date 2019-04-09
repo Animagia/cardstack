@@ -669,6 +669,40 @@ class CardStackAm {
         echo("</p>");
     }
 	
+	
+    static function printTamakoLink() {
+        
+        
+        if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
+            ?>
+                                                    <p>Linki do ściągnięcia działają tylko w Polsce. Skontaktuj się z nami,
+                                                        jeśli kraj rozpoznano niepoprawnie, lub jeśli tymczasowo przebywasz
+                                                        w innym kraju UE.</p>
+            <?php
+            return;
+        }
+        
+		echo('<p><strong>Uwaga:</strong> Plik wideo z filmem jest przeznaczony tylko do Twojego <strong>osobistego użytku</strong> ' .
+		'i nie może być udostępniany innym osobom, chyba że przepisy prawa stanowią inaczej.</p>');
+		
+        echo("<p>");
+
+        $pure_string = "Tamako_" . "00" . "_" . time() . "_" . $_SERVER['REMOTE_ADDR'];
+        $key = CardStackAmConstants::getKey();
+
+        $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
+                        MCRYPT_MODE_ECB, $iv));
+
+        echo("<a href=\"" . CardStackAmConstants::getAlternateVidUrl() .
+        "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
+        echo("[Animagia.pl] Tamako Love Story.mkv");
+        echo("</a>");
+
+        echo("</p>");
+    }
+	
 
     static function printIpNotice() {
         echo("<p>");

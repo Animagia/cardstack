@@ -127,6 +127,11 @@ if (is_active_sidebar(1)) {
                         $cardstack_am->printFutureLink();
 						$cs_am_can_download_anything = true;
                     }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 9999)) {
+                        echo ("<h3>Tamako Love Story</h3>");
+                        $cardstack_am->printTamakoLink();
+						$cs_am_can_download_anything = true;
+                    }
 					
                     if($substatus === "expiring" || $substatus === "active") {
                         echo ("<h3>Aruku to Iu Koto</h3>");
