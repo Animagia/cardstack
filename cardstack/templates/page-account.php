@@ -92,6 +92,11 @@ if (is_active_sidebar(1)) {
 						– <a href=\"https://animagia.pl/kyoukai-no-kanata-ill-be-here-przyszlosc/\">zacznij oglądać</a></p>");
 						$cardstack_am_can_watch_anything = true;
                     }
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 646)) {
+                        echo ("<p>Tamako Love Story
+						– <a href=\"https://animagia.pl/tamako-love-story/\">zacznij oglądać</a></p>");
+						$cardstack_am_can_watch_anything = true;
+                    }
 					if(!$cardstack_am_can_watch_anything) {
                         echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
@@ -127,7 +132,7 @@ if (is_active_sidebar(1)) {
                         $cardstack_am->printFutureLink();
 						$cs_am_can_download_anything = true;
                     }
-                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 9999)) {
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 646)) {
                         echo ("<h3>Tamako Love Story</h3>");
                         $cardstack_am->printTamakoLink();
 						$cs_am_can_download_anything = true;

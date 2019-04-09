@@ -76,7 +76,7 @@ if (is_active_sidebar(1)) {
                     }
                 } else if(strpos(get_the_content(), 'tamako') !== false ) {
                     echo '<p>Czy to miłość? Tak.</p>';
-                    if (CardStackAm::userCanStreamProduct(9999)) {
+                    if (CardStackAm::userCanStreamProduct(646)) {
                         CsAmVideo::printPremiumFilmPlayer("Tamako");
                     } else {
                         CsAmVideo::printFreeFilmPlayer("Tama");
