@@ -26,8 +26,6 @@ class CsAmVideo {
             $csam_preview_length = 772;
         } else if ("Future" == $csam_short_name) {
             $csam_preview_length = 768;
-        } else if ("Tama" == $csam_short_name) {
-            $csam_preview_length = 600;
         }
 
 ?>
@@ -49,11 +47,26 @@ class CsAmVideo {
         <script>
             var player = videojs('amagi');
             var isPlaying = false;
+function makeRequest(){
+var xhr = new XMLHttpRequest();
+var link="https://dev.animagia.pl/wp84591/";
+//var fd = new FormData();
+//fd.append('videofile', document.getElementById("amagi").files[0]);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+       console.log(xhr.responseText);
+    }
+}
+xhr.open('POST',link,true);
+xhr.send(null);
+}
 	    function loadError() {
             console.warn("Playback has not started - expired token?");
+makeRequest();
             }
             player.on('waiting', function() {
             isPlaying = false;
+makeRequest();
 	    setTimeout(function(){ loadError(); }, 4000);
             });
 
