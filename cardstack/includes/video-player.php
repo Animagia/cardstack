@@ -27,7 +27,7 @@ class CsAmVideo {
         } else if ("Future" == $csam_short_name) {
             $csam_preview_length = 768;
         } else if ("Tama" == $csam_short_name) {
-            $csam_preview_length = 600;
+            $csam_preview_length = 645;
         }
 
 ?>
