@@ -593,7 +593,7 @@ class CardStackAm {
         $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
                         MCRYPT_MODE_ECB, $iv));
 
-        echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
+        echo("<a href=\"" . CardStackAmConstants::getAlternateVidUrl() .
         "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
         echo("[Animagia.pl] Hanasaku Iroha HSH 1080p.mkv");
         echo("</a>");
@@ -627,7 +627,7 @@ class CardStackAm {
         $obfuscated = bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $key, utf8_encode($pure_string),
                         MCRYPT_MODE_ECB, $iv));
 
-        echo("<a href=\"" . CardStackAmConstants::getVidUrl() .
+        echo("<a href=\"" . CardStackAmConstants::getAlternateVidUrl() .
         "ddl/serve_ddl.php?token=" . $obfuscated . "\">");
         echo("[Animagia.pl] Kyoukai no Kanata – przeszłość.mkv");
         echo("</a>");
