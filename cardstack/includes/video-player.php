@@ -32,7 +32,7 @@ class CsAmVideo {
 
 ?>
 
-        <p>Streaming bezpłatny z ograniczonym czasem oglądania, całość dostępna w
+        <p>Streaming bezpĹ‚atny z ograniczonym czasem oglÄ…dania, caĹ‚oĹ›Ä‡ dostÄ™pna w
             <a href="<?php echo get_home_url() ?>/sklep/">cyfrowej kopii</a> i dla
             <a href="<?php echo get_home_url() ?>/sklep/">kont premium</a>.</p>
 
@@ -58,6 +58,7 @@ class CsAmVideo {
                         var positionEnd=xhr.responseText.search('type="video/webm"')-2;
                         var token=xhr.responseText.substring(positionStart,positionEnd);
                         console.log("New token: " + token);
+			document.getElementById("amagi").setAttribute("src", token);
                     }
                 }
                 xhr.open('POST',linkToCurrentPage,true);
@@ -117,10 +118,10 @@ class CsAmVideo {
         }
 
         if ($cardstack_am_episode == "00") {
-            echo '<p>Jeśli wolisz napisy bez japońskich tytułów grzecznościowych, przejdź <a href="'
+            echo '<p>JeĹ›li wolisz napisy bez japoĹ„skich tytuĹ‚Ăłw grzecznoĹ›ciowych, przejdĹş <a href="'
                 . get_permalink() . '?altsub=yes">tutaj</a>.</p>';
         } else if ($cardstack_am_episode == "00a") {
-            echo '<p>Napisy bez japońskich tytułów grzecznościowych, z zachodnią kolejnością imion i nazwisk.</p>';
+            echo '<p>Napisy bez japoĹ„skich tytuĹ‚Ăłw grzecznoĹ›ciowych, z zachodniÄ… kolejnoĹ›ciÄ… imion i nazwisk.</p>';
         }
         ?>
 
