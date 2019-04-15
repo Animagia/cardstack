@@ -50,6 +50,7 @@ class CsAmVideo {
             var player = videojs('amagi');
             
             function makeRequest(){
+		var source = document.createElement('source');
     		var xhr = new XMLHttpRequest();
    		var linkToCurrentPage="<?php echo get_permalink() ?>";
                 xhr.onreadystatechange = function() {
@@ -57,9 +58,14 @@ class CsAmVideo {
                         var positionStart=xhr.responseText.search("token=")+6;
                         var positionEnd=xhr.responseText.search('type="video/webm"')-2;
                         var token=xhr.responseText.substring(positionStart,positionEnd);
+			source.setAttribute('src', "https://dev.animagia.pl/static/video/stream/film_stream.php/Hana2.webm?token=" + token);
+			source.setAttribute('type', 'video/webm');
                         console.log("New token: " + token);
-			document.getElementById("amagi").setAttribute("src", token);
-                    }
+			document.getElementById("amagi_html5_api").innerHTML = '';
+			
+			document.getElementById("amagi_html5_api").appendChild(source);  
+             
+ }
                 }
                 xhr.open('POST',linkToCurrentPage,true);
                 xhr.send(null);
