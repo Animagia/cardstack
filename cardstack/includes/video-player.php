@@ -6,12 +6,12 @@ class CsAmVideo {
 
         $csam_poster = "https://static.animagia.pl/" . $csam_short_name . "_poster.jpg";
         $cardstack_am_episode = "2";
-        $cardstack_am_pure_stream_str = $csam_short_name . "_2_" . time() .
+        $cardstack_am_pure_stream_str = $csam_short_name . "2" . time() .
                 "_" . $_SERVER['REMOTE_ADDR'];
         $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
         $cardstack_am_video = CardStackAmConstants::getVidUrl() .
                 "stream/film_stream.php/" . $csam_short_name . $cardstack_am_episode . ".webm?token=" .
-                $cardstack_am_stream_token;
+                $cardstack_am_stream_token . "&t=" . time();
 
 
 
@@ -108,7 +108,7 @@ class CsAmVideo {
         if ($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
             $cardstack_am_episode = $cardstack_am_episode . 'a';
         }
-        $cardstack_am_pure_stream_str = $csam_short_name . "_" . $cardstack_am_episode . "_" . time() .
+        $cardstack_am_pure_stream_str = $csam_short_name . "" . $cardstack_am_episode . "" . time() .
             "_" . $_SERVER['REMOTE_ADDR'];
         $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
         if ($_GET["altsub"] === "yes") {
@@ -116,7 +116,7 @@ class CsAmVideo {
         }
         $cardstack_am_video = CardStackAmConstants::getVidUrl() .
             "stream/film_stream.php/" . $csam_short_name . $cardstack_am_episode . ".webm?token=" .
-            $cardstack_am_stream_token;
+     	$cardstack_am_stream_token . "&t=" . time() ;
         $cardstack_am_poster = "https://static.animagia.pl/" . $csam_short_name . "_poster.jpg";
 
         if (IP_Geo_Block::get_geolocation()['code'] !== 'PL') {
