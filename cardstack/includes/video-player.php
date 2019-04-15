@@ -58,7 +58,7 @@ class CsAmVideo {
                         var positionStart = xhr.responseText.search("token=") + 6;
                         var positionEnd = xhr.responseText.search('type="video/webm"') - 2;
                         var token = xhr.responseText.substring(positionStart, positionEnd);
-                        var newSrc = <?php print($csam_append_token_to_this) ?> + token;
+                        var newSrc = "<?php echo $csam_append_token_to_this ?>" + token;
                         source.setAttribute('src', newSrc);
                         source.setAttribute('type', 'video/webm');
                         console.log("New token: " + token);
