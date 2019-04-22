@@ -58,6 +58,9 @@ if (is_active_sidebar(1)) {
                         "_" . $_SERVER['REMOTE_ADDR'];
                 $cardstack_am_stream_token = CardStackAm::obfuscateString($cardstack_am_pure_stream_str);
                 $cardstack_am_episode = explode(" ", get_the_title())[4];
+                if($_GET["sd"] === "yes") {
+                    $cardstack_am_episode = $cardstack_am_episode . 's';
+                }
                 if($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
                     $cardstack_am_episode = $cardstack_am_episode . 'a';
                 }
