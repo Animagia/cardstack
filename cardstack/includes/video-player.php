@@ -37,7 +37,7 @@ class CsAmVideo {
 
 ?>
 
-        <p>Streaming bezpĹ‚atny z ograniczonym czasem oglÄ…dania, caĹ‚oĹ›Ä‡ dostÄ™pna w
+        <p>Streaming bezpłatny z ograniczonym czasem oglądania, całość dostępna w
             <a href="<?php echo get_home_url() ?>/sklep/">cyfrowej kopii</a> i dla
             <a href="<?php echo get_home_url() ?>/sklep/">kont premium</a>.</p>
 
@@ -175,10 +175,10 @@ var player = videojs('amagi');
         }
 
         if ($cardstack_am_episode == "00") {
-            echo '<p>JeĹ›li wolisz napisy bez japoĹ„skich tytuĹ‚Ăłw grzecznoĹ›ciowych, przejdĹş <a href="'
+            echo '<p>Jeśli wolisz napisy bez japońskich tytułów grzecznościowych, przejdź <a href="'
                 . get_permalink() . '?altsub=yes">tutaj</a>.</p>';
         } else if ($cardstack_am_episode == "00a") {
-            echo '<p>Napisy bez japoĹ„skich tytuĹ‚Ăłw grzecznoĹ›ciowych, z zachodniÄ… kolejnoĹ›ciÄ… imion i nazwisk.</p>';
+            echo '<p>Napisy bez japońskich tytułów grzecznościowych, z zachodnią kolejnością imion i nazwisk.</p>';
         }
         ?>
 
