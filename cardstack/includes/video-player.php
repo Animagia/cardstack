@@ -50,6 +50,8 @@ class CsAmVideo {
 
         <script src="https://static.animagia.pl/video.js"></script>
 	<script src="https://dev.animagia.pl/static/videojs-resolution-switcher.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://dev.animagia.pl/static/videojs.suggestedVideoEndc.css">
+	<script src="https://dev.animagia.pl/static/videojs.suggestedVideoEndcap1.js"></script>
 <script>
 
 //napisy
@@ -90,7 +92,7 @@ document.getElementById("amagi").innerHTML ='<track kind="captions" src="https:/
     })
   })
 
-var player = videojs('amagi');   
+var player = videojs('amagi');  
 
 
 
@@ -191,11 +193,11 @@ var player = videojs('amagi');
         </video>
         <script src="https://static.animagia.pl/video.js"></script>
 	<script src="https://dev.animagia.pl/static/videojs-resolution-switcher.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="https://dev.animagia.pl/static/videojs.suggestedVideoEndca.css">
+	<script src="https://dev.animagia.pl/static/videojs.suggestedVideoEndcap1.js"></script>
         <script>
 //napisy
-document.getElementById("amagi").innerHTML ='<track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/chi_hans/vtt" srclang="zh" label="Chinese" default></track><track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/eng/vtt" srclang="en" label="English"></track><track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/spa/vtt" srclang="es" label="Spanish"></track><track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/fre_ca/vtt" srclang="fr" label="French"></track>'
-
+document.getElementById("amagi").innerHTML ='<track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/chi_hans/vtt" srclang="zh" label="Chinese" default></track><track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/eng/vtt" srclang="en" label="English"></track><track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/spa/vtt" srclang="es" label="Spanish"></track><track kind="captions" src="https://dotsub.com/media/5d5f008c-b5d5-466f-bb83-2b3cfa997992/c/fre_ca/vtt" srclang="fr" label="French"></track>';
 
 //premium
 	videojs('amagi', {
@@ -239,6 +241,63 @@ document.getElementById("amagi").innerHTML ='<track kind="captions" src="https:/
             vid1.on('dblclick', function () {
                 vid1.exitFullscreen();
             });
+
+var video = videojs('amagi');
+  video.suggestedVideoEndcap({
+    header: 'Kolejny odcinek:',
+    suggestions: [
+      {
+        title: 'Suggested Video One',
+        url: '/another-video.html',
+        image: 'http://placehold.it/250', // could be an animated GIF
+        alt: 'Description of photo', // optional photo description, defaults to the title
+        target: '_blank'
+
+      },
+
+
+ 
+{
+        title: 'Suggested Video One',
+        url: '/another-video.html',
+        image: 'http://placehold.it/250', // could be an animated GIF
+        alt: 'Description of photo', // optional photo description, defaults to the title
+        target: '_blank'
+	     },
+
+      {
+        title: 'Suggested Article One',
+        url: '/a-different-article.html',
+        image: 'http://placehold.it/250',
+        target: '_self'
+	     }
+    ]
+  });
+var spanOtherFilms=document.createElement("span");
+document.getElementById('amagi_html5_api').addEventListener('ended',myHandler,false);
+
+    function myHandler(e){
+var textT=document.getElementById("amagi");
+//var spanOtherFilms=document.createElement("span");
+spanOtherFilms.innerHTML="Inne filmy:";
+spanOtherFilms.setAttribute("id","otherFilms");
+spanOtherFilms.setAttribute("style",'display: inline; color: white; z-index: 11; text-align: center; position: absolute; bottom: 40%; font-size: large; font-weight: bold; left: 46.5%;');
+var otherFilmss = document.getElementById("otherFilms");
+document.createTextNode(otherFilmss);
+textT.appendChild(spanOtherFilms);
+
+            }
+document.getElementById('amagi_html5_api').addEventListener('pause',deleteSpan,false);
+
+function deleteSpan(e){
+spanOtherFilms.innerHTML='';
+}
+document.getElementById('amagi_html5_api').addEventListener('play',deleteSpan,false);
+
+function deleteSpan(e){
+spanOtherFilms.innerHTML='';
+}
+
         </script>
         <?php
     }
