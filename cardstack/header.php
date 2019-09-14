@@ -23,7 +23,7 @@
         ?>
 
         <?php
-        /* Animagia.pl-specific hack */
+        /* Animagia.pl-specific hacks */
         if (CardStackAm::templateHasVideo()) {
             print '<link href="https://static.animagia.pl/video-js.css" ' .
                     ' rel="stylesheet" type="text/css" />' . PHP_EOL;
@@ -33,7 +33,17 @@
             print '<link href="' . get_template_directory_uri() . '/page-welcome-style.css" ' .
                 ' rel="stylesheet" type="text/css" />';
         }
-        /* end hack */
+        
+        
+
+        if(is_wc_endpoint_url( 'order-received' )) {
+        
+            CardStackAmConstants::printThankYouPageHeader();
+        
+        }
+        
+        
+        /* end hacks */
         ?>
 
 
@@ -60,6 +70,13 @@
 
     <body <?php body_class(); ?>>
 
+        <?php        
+        if(is_wc_endpoint_url( 'order-received' )) {
+        
+            CardStackAmConstants::purchaseSuccessful();
+        
+        }
+        ?>
 
         <header id="header-main">
 
