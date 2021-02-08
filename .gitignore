@@ -4,3 +4,4 @@ cardstack/pp_all_cards.png
 cardstack/fbbtn_plain.svg
 nbproject/private
 .idea
+cardstack/templates/page-android-endpoint.php
