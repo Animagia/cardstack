@@ -97,6 +97,16 @@ if (is_active_sidebar(1)) {
 						– <a href=\"https://animagia.pl/tamako-love-story/\">zacznij oglądać</a></p>");
 						$cardstack_am_can_watch_anything = true;
                     }
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 989)) {
+                        echo ("<p>DanMachi: Arrow of the Orion
+						– <a href=\"https://animagia.pl/danmachi-arrow-of-the-orion/\">zacznij oglądać</a></p>");
+						$cardstack_am_can_watch_anything = true;
+                    }
+	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 1012)) {
+                        echo ("<p>Servamp: Alice in the Garden
+						– <a href=\"https://animagia.pl/servamp-alice-in-the-garden/\">zacznij oglądać</a></p>");
+						$cardstack_am_can_watch_anything = true;
+                    }
 					if(!$cardstack_am_can_watch_anything) {
                         echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
@@ -110,7 +120,7 @@ if (is_active_sidebar(1)) {
                                     CardStackAmConstants::getAmagiId())) {
                         echo ("<h3>Amagi Brilliant Park</h3>");
                         $cardstack_am->printAmagiLinks();
-			$cs_am_can_download_anything = true;
+						$cs_am_can_download_anything = true;
                     }
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318)) {
                         echo ("<h3>Chuunibyou demo Koi ga Shitai! Take On Me</h3>");
@@ -120,6 +130,16 @@ if (is_active_sidebar(1)) {
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 508)) {
                         echo ("<h3>Hanasaku Iroha: Home Sweet Home</h3>");
                         $cardstack_am->printHanaIroLink();
+						$cs_am_can_download_anything = true;
+                    }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 1012)) {
+                        echo ("<h3>Servamp: Alice in the Garden</h3>");
+                        $cardstack_am->printServampLink();
+						$cs_am_can_download_anything = true;
+                    }
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 989)) {
+                        echo ("<h3>DanMachi: Arrow of the Orion</h3>");
+                        $cardstack_am->printDanMachiLink();
 						$cs_am_can_download_anything = true;
                     }
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 572)) {
@@ -137,18 +157,8 @@ if (is_active_sidebar(1)) {
                         $cardstack_am->printTamakoLink();
 						$cs_am_can_download_anything = true;
                     }
-					
-                    if($substatus === "expiring" || $substatus === "active") {
-                        echo ("<h3>Aruku to Iu Koto</h3>");
-                        $cardstack_am->printArukuLink();
-                    }
-                    
-                    if($substatus === "expiring" || $substatus === "active") {
-                        echo ("<h3>Łososik (Shake-chan)</h3>");
-                        $cardstack_am->printShakeLink();
-                    }
 
-                    if ($substatus === "invalid" && $cs_am_can_download_anything === false) {
+                    if ($cs_am_can_download_anything === false) {
                         echo ("<p>Brak plików. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }
@@ -167,4 +177,3 @@ if (is_active_sidebar(1)) {
     </article></main>
 
 <?php get_footer(); ?>
-	

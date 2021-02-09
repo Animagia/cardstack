@@ -81,6 +81,20 @@ if (is_active_sidebar(1)) {
                     } else {
                         CsAmVideo::printFreeFilmPlayer("Tama");
                     }
+                } else if(strpos(get_the_content(), 'danmachi') !== false ) {
+                    echo '<p>Boginie i bohaterowie na epickim queście.</p>';
+                    if (CardStackAm::userCanStreamProduct(989)) {
+                        CsAmVideo::printPremiumFilmPlayer("DanMachiOrion");
+                    } else {
+                        CsAmVideo::printFreeFilmPlayer("DanMachi");
+                    }
+                } else if(strpos(get_the_content(), 'servamp') !== false ) {
+                    echo '<p>Wampiry i ludzie mierzą się z nienaturalnym kryzysem.</p>';
+                    if (CardStackAm::userCanStreamProduct(1012)) {
+                        CsAmVideo::printPremiumFilmPlayer("ServampAlice");
+                    } else {
+                        CsAmVideo::printFreeFilmPlayer("Servamp");
+                    }
                 } else {
                     echo '<p>Najnowszy film o tych, dla których dorastanie jest zbyt mainstreamowe.</p>';
                     if (CardStackAm::userCanStreamProduct(318)) {

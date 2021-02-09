@@ -64,7 +64,7 @@ if (is_active_sidebar(1)) {
                 if($_GET["altsub"] === "yes" && $cardstack_am_episode == "1") {
                     $cardstack_am_episode = $cardstack_am_episode . 'a';
                 }
-                $cardstack_am_video = CardStackAmConstants::getVidUrl() .
+                $cardstack_am_video = CardStackAmConstants::getAlternateVidUrl() .
                         "stream/serve_stream.php/Amagi" . $cardstack_am_episode . ".webm?token=" .
                         $cardstack_am_stream_token;
                 $cardstack_am_poster = "https://static.animagia.pl/Amagi" . $cardstack_am_episode .

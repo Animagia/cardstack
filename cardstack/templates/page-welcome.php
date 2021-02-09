@@ -59,7 +59,9 @@ if (is_active_sidebar(1)) {
                     . 'under EU law.</p>';
                 }
 				
-				echo '<p>Film kinowy studia P.A. Works, opowiadający oryginalną historię.</p>';
+				echo '<p>Film kinowy pełen ciepła, rodzinnej miłości i zmagań życia codziennego w niewielkim, ' .
+					'ale pięknym miasteczku Yunosagi. Wszstko to w kompletnej, starannie przygotowanej ' .
+					'polskiej wersji językowej z dubbingiem grupy NanoKarrin, a także napisami do wyboru.</p>';
 
                 if (CardStackAm::userCanStreamProduct(508)) { //318 = ch, 508 = h
                     CsAmVideo::printPremiumFilmPlayer("HanaIro");

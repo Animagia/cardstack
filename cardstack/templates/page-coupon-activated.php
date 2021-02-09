@@ -65,7 +65,7 @@ if (is_active_sidebar(1)) {
 
                     if ($cardstack_am_show_links) {
 						
-						if($cardstack_am_wc_c->get_product_ids()[0] === 39) { // XXX
+						if($cardstack_am_wc_c->get_product_ids()[0] === 39) { 
 
 							$cardstack_am->printAmagiLinks();
 
@@ -76,7 +76,7 @@ if (is_active_sidebar(1)) {
 							' i wpisz kod z kuponu ponownie, by wygenerować nowe.</p>' .
 							'<p>Raz ściągnięte pliki możesz zachować na zawsze.</p>';
 							
-						} else if($cardstack_am_wc_c->get_product_ids()[0] === 318) { // XXX
+						} else if($cardstack_am_wc_c->get_product_ids()[0] === 318) { 
 
 
 							$cardstack_am->printChuuniLink();
@@ -88,9 +88,20 @@ if (is_active_sidebar(1)) {
 							' i wpisz kod z kuponu ponownie, by wygenerować nowy.</p>' .
 							'<p>Raz ściągnięty plik możesz zachować na zawsze.</p>';
 
-						} if($cardstack_am_wc_c->get_product_ids()[0] === 508) { // XXX
+						} else if($cardstack_am_wc_c->get_product_ids()[0] === 508) { 
 
 							$cardstack_am->printHanaIroLink();
+
+							echo '<p>Kupon został aktywowany: ' . $cardstack_am_wc_c->get_description() .
+							', i przez 15 dni od tamtej chwili możesz go użyć do generowania linków. ' .
+							'Wygenerowane linki są krótkotrwałe – w razie potrzeby ' .
+							'wróć na <a href="https://animagia.pl/kupon">poprzednią stronę</a> ' .
+							' i wpisz kod z kuponu ponownie, by wygenerować nowe.</p>' .
+							'<p>Raz ściągnięte pliki możesz zachować na zawsze.</p>';
+							
+						} else if($cardstack_am_wc_c->get_product_ids()[0] === 646) { 
+
+							$cardstack_am->printTamakoLink();
 
 							echo '<p>Kupon został aktywowany: ' . $cardstack_am_wc_c->get_description() .
 							', i przez 15 dni od tamtej chwili możesz go użyć do generowania linków. ' .
