@@ -1,7 +1,7 @@
 <?php
 
 class CsAmVideo {
-
+		
     function PrintFreeFilmPlayer($csam_short_name) {
 
         $csam_poster = "https://static.animagia.pl/" . $csam_short_name . "_poster.jpg";
@@ -175,5 +175,51 @@ class CsAmVideo {
         </script>
         <?php
     }
+
+
+	function getFreeFilenameBySku($csam_sku) {
+		$csam_short_name = "";
+		
+		if("danmachi" == $csam_sku) {
+			$csam_short_name = "DanMachi";
+		} else if("servamp" == $csam_sku) {
+			$csam_short_name = "Servamp";
+		} else if("chuunibyou" == $csam_sku) {
+			$csam_short_name = "Chuu";
+		} else if("hanairo" == $csam_sku) {
+			$csam_short_name = "Hana";
+		} else if("knk_past" == $csam_sku) {
+			$csam_short_name = "Past";
+		} else if("knk_future" == $csam_sku) {
+			$csam_short_name = "Future";
+		} else if("tamako" == $csam_sku) {
+			$csam_short_name = "Tama";
+		}
+        
+        return $csam_short_name;
+	}
+
+
+	function getPremiumFilenameBySku($csam_sku) {
+		$csam_short_name = "";
+		
+		if("danmachi" == $csam_sku) {
+			$csam_short_name = "DanMachiOrion";
+		} else if("servamp" == $csam_sku) {
+			$csam_short_name = "ServampAlice";
+		} else if("chuunibyou" == $csam_sku) {
+			$csam_short_name = "Chuuni";
+		} else if("hanairo" == $csam_sku) {
+			$csam_short_name = "HanaIro";
+		} else if("knk_past" == $csam_sku) {
+			$csam_short_name = "KnKPast";
+		} else if("knk_future" == $csam_sku) {
+			$csam_short_name = "KnKFuture";
+		} else if("tamako" == $csam_sku) {
+			$csam_short_name = "Tamako";
+		}
+        
+        return $csam_short_name;
+	}
 
 }

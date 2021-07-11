@@ -29,7 +29,7 @@ if (is_active_sidebar(1)) {
 
                     echo('<p><a href="https://animagia.pl/wp-login.php?action=lostpassword">Przypomnij hasło</a></p>');
                     echo '<p>Konto możesz założyć przy pierwszym zakupie w naszym sklepie. '
-                    . 'By oglądać odcinki dostępne bezpłatnie, nie musisz zakładać konta.</p>';
+                    . 'By oglądać wideo dostępne bezpłatnie, nie musisz zakładać konta.</p>';
 
                 else :
                     ?>
@@ -47,14 +47,14 @@ if (is_active_sidebar(1)) {
                     <?php
                     $substatus = $cardstack_am->getSubStatus();
 
-                    if ($substatus === "expiring") { //expiring
+                    if ($substatus === "expiring") {
                         $date = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
                         $date->setTimestamp($cardstack_am->getExpirationDate());
                         echo ("<p><strong>Wygasające</strong>, ważne do: " . $date->format("Y-m-d H:i:s") .
                         ". <a href=\"https://animagia.pl/\">Zacznij oglądać anime!</a></p>");
-                    } else if ($substatus === "active") { //active
+                    } else if ($substatus === "active") {
                         echo ("<p><strong>Aktywne.</strong> " .
-                        "<a href=\"https://animagia.pl/amagi-brilliant-park-odc-1/\">Zacznij oglądać anime!</a></p>" .
+                        "<a href=\"https://animagia.pl/\">Zacznij oglądać anime!</a></p>" .
                         "<p><small>Jeśli chcesz zrezygnować, <a href=\"https://www.paypal.com/myaccount/autopay\">" .
                         "anuluj cykliczną płatność</a> w PayPal.</small></p>");
                     } else {
@@ -63,63 +63,15 @@ if (is_active_sidebar(1)) {
 
                     $current_user = wp_get_current_user();
 
-                    echo ("<h2>Zakupione anime</h2>");
-
-					$cardstack_am_can_watch_anything = false;
-	
-                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
-                                    CardStackAmConstants::getAmagiId())) {
-                        echo ("<p>Amagi Brilliant Park – <a href=\"https://animagia.pl/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318)) {
-                        echo ("<p>Chuunibyou demo Koi ga Shitai! Take On Me
-						– <a href=\"https://animagia.pl/chuunibyou-demo-koi-ga-shitai-take-on-me/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 508)) {
-                        echo ("<p>Hanasaku Iroha: Home Sweet Home
-						– <a href=\"https://animagia.pl/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 572)) {
-                        echo ("<p>Kyoukai no Kanata: I’ll Be Here – przeszłość
-						– <a href=\"https://animagia.pl/kyoukai-no-kanata-ill-be-here-przeszlosc/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 615)) {
-                        echo ("<p>Kyoukai no Kanata: I’ll Be Here – przyszłość
-						– <a href=\"https://animagia.pl/kyoukai-no-kanata-ill-be-here-przyszlosc/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 646)) {
-                        echo ("<p>Tamako Love Story
-						– <a href=\"https://animagia.pl/tamako-love-story/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 989)) {
-                        echo ("<p>DanMachi: Arrow of the Orion
-						– <a href=\"https://animagia.pl/danmachi-arrow-of-the-orion/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-	                if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 1012)) {
-                        echo ("<p>Servamp: Alice in the Garden
-						– <a href=\"https://animagia.pl/servamp-alice-in-the-garden/\">zacznij oglądać</a></p>");
-						$cardstack_am_can_watch_anything = true;
-                    }
-					if(!$cardstack_am_can_watch_anything) {
-                        echo ("<p>Brak zakupionych anime. " .
-                        "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
-                    }
 
                     echo ("<h2>Pliki do pobrania</h2>");
-					
+
                     $cs_am_can_download_anything = false;
 
-                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID,
-                                    CardStackAmConstants::getAmagiId())) {
-                        echo ("<h3>Amagi Brilliant Park</h3>");
-                        $cardstack_am->printAmagiLinks();
+
+                    if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 1180)) {
+                        echo ("<h3>Film K-On!</h3>");
+                        $cardstack_am->printDdlLink("kon");
 						$cs_am_can_download_anything = true;
                     }
                     if (wc_customer_bought_product($current_user->user_email, $current_user->ID, 318)) {
@@ -159,17 +111,14 @@ if (is_active_sidebar(1)) {
                     }
 
                     if ($cs_am_can_download_anything === false) {
-                        echo ("<p>Brak plików. " .
+                        echo ("<p>Brak zakupionych anime. " .
                         "<a href=\"https://animagia.pl/sklep\">Przejdź do sklepu</a></p>");
                     }
 
 
-                    // the_content();
                     ?>
 
                 <?php endif; ?>
-
-                <?php comments_template(); ?>
 
     <?php endwhile; ?>
 <?php endif; ?>
@@ -177,3 +126,4 @@ if (is_active_sidebar(1)) {
     </article></main>
 
 <?php get_footer(); ?>
+	

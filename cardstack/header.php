@@ -27,9 +27,11 @@
         if (CardStackAm::templateHasVideo()) {
             print '<link href="https://static.animagia.pl/video-js.css" ' .
                     ' rel="stylesheet" type="text/css" />' . PHP_EOL;
+            print '<link href="https://static.animagia.pl/video-player.css" ' .
+                    ' rel="stylesheet" type="text/css" />' . PHP_EOL;
         }
 
-        if (is_page_template('templates/page-welcome.php')){
+        if (is_front_page()){
             print '<link href="' . get_template_directory_uri() . '/page-welcome-style.css" ' .
                 ' rel="stylesheet" type="text/css" />';
         }
@@ -205,3 +207,12 @@ if (has_nav_menu('cardstack_nav_menu')) :
 <?php endif; ?>
 
         </header>
+        
+<?php
+$csam_userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($csam_userAgent,'android') !== false) : ?>
+
+		<aside class="aside notice" style="display: none;"><p>Mamy aplikację na Androida:</p>
+		</aside>
+
+<?php endif; ?>

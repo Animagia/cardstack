@@ -20,6 +20,14 @@
 			} else {
 				print('WordPress ' . $wp_version . ' with Card Stack theme');
 			}
+			
+			$csam_userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+			if(stripos($csam_userAgent,'android') !== false) {
+				print("<p style=\"display: none;\">" .
+						CardStackAmConstants::getMobileAppRelatedFooter()
+						. "</p>");
+			}
+			
 		?>
 	</footer>
 
