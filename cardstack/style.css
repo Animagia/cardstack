@@ -909,6 +909,14 @@ article div.fb_iframe_widget {
         max-height: 70px !important;
     }
 }
+
+aside.notice {
+    margin: 0 auto 40px auto;
+    max-width: 960px;
+    box-shadow: 0 2px 2px #ccc;
+    background-color: white;
+}
+
 /* end Animagia.pl specific */
 
 @media(max-width: 960px) {

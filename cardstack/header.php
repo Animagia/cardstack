@@ -206,13 +206,25 @@ if (has_nav_menu('cardstack_nav_menu')) :
                 </nav>
 <?php endif; ?>
 
-        </header>
+        </header><main<?php
+if (is_active_sidebar(1)) {
+    print(' class="with-sidebar"');
+}
+?>>
         
 <?php
 $csam_userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
-if(stripos($csam_userAgent,'android') !== false) : ?>
+$csam_shopping = false;
 
-		<aside class="aside notice" style="display: none;"><p>Mamy aplikację na Androida:</p>
+if ( function_exists( 'is_woocommerce' ) ) {
+	if ( is_cart() || is_checkout() ) {
+		$csam_shopping = true;
+	}
+}
+
+if((stripos($csam_userAgent,'android') !== false) && !is_user_logged_in() && !$csam_shopping) : ?>
+
+		<aside class="aside notice" style="display: none;"><p>Animagia.pl</p>
 		</aside>
 
 <?php endif; ?>

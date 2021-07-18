@@ -1,7 +1,7 @@
 	
 	<?php get_header(); ?>
 	
-	<main<?php if(is_active_sidebar(1)) { print(' class="with-sidebar"'); } ?>><article <?php if(get_theme_mod('post_breadcrumbs')) { print('class="has-breadcrumbs"'); } ?>>
+	<?php if(is_active_sidebar(1)) { print(' class="with-sidebar"'); } ?>><article <?php if(get_theme_mod('post_breadcrumbs')) { print('class="has-breadcrumbs"'); } ?>>
 	
 	<?php if(have_posts()) : ?>
 	<?php while(have_posts()) : the_post(); ?>

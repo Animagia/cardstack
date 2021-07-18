@@ -68,7 +68,6 @@ if (!empty($cardstack_welcomeSectionText)) {
 }
 
 if (have_posts()) {
-    print('<main>');
 
     while (have_posts()) {
 

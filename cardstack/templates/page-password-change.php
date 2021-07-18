@@ -7,11 +7,7 @@
 
 <?php get_header(); ?>
 
-<main<?php
-if (is_active_sidebar(1)) {
-    print(' class="with-sidebar"');
-}
-?>><article class="page<?php
+<article class="page<?php
     if (get_theme_mod('page_breadcrumbs')) {
         print(' has-breadcrumbs');
     }

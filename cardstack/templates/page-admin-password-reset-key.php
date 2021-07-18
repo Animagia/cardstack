@@ -8,8 +8,6 @@
 
 <?php get_header(); ?>
 
-<main <?php if (is_active_sidebar(1)): print('class="with-sidebar"'); endif ?> >
-
     <article class="page<?php if (get_theme_mod('page_breadcrumbs')): print(' has-breadcrumbs'); endif ?>" >
 
         <?php if (current_user_can('administrator')): ?>
